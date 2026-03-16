@@ -1,17 +1,22 @@
 # dependencies
-/node_modules
+node_modules/
+frontend/node_modules/
 /.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage/
+frontend/coverage/
 
 # next.js
-/.next/
-/out/
+.next/
+frontend/.next/
+out/
+frontend/out/
 
 # production
-/build
+build/
+frontend/build/
 
 # misc
 .DS_Store
@@ -27,6 +32,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+frontend/.vercel/
 
 # typescript
 *.tsbuildinfo
