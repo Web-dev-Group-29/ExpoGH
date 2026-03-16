@@ -7,14 +7,15 @@ import { destinations } from '@/lib/data'
 import FavoriteButton from '@/components/FavoriteButton'
 import locationsDB from '@/lib/locationsdb.json'
 
-interface PageProps { params: { id: string } }
+interface PageProps { params: Promise<{ id: string }> }
 
 export async function generateStaticParams() {
   return destinations.map((d) => ({ id: d.id }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const d = destinations.find((x) => x.id === params.id)
+  const { id } = await params
+  const d = destinations.find((x) => x.id === id)
   if (!d) return {}
   return {
     title: `${d.name} — Ghana Tourism`,
@@ -43,8 +44,9 @@ const lodgingCards = [
   },
 ]
 
-export default function DestinationPage({ params }: PageProps) {
-  const destination = destinations.find((d) => d.id === params.id)
+export default async function DestinationPage({ params }: PageProps) {
+  const { id } = await params
+  const destination = destinations.find((d) => d.id === id)
   if (!destination) notFound()
 
   return (
