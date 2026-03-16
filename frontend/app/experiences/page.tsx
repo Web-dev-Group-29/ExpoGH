@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Plus, MapPin } from 'lucide-react'
+import { Plus, MapPin, X, Trash2 } from 'lucide-react'
 import { destinations, type Experience } from '@/lib/data'
 
 const EXPERIENCES_KEY = 'expogh_experiences'
@@ -46,6 +46,7 @@ export default function ExperiencesPage() {
   const [experiences, setExperiences] = useState<Experience[]>(INITIAL)
   const [text, setText] = useState('')
   const [selectedSite, setSelectedSite] = useState(destinations[0].id)
+  const [selectedExp, setSelectedExp] = useState<Experience | null>(null)
 
   useEffect(() => {
     try {
@@ -76,6 +77,17 @@ export default function ExperiencesPage() {
       localStorage.setItem(EXPERIENCES_KEY, JSON.stringify(user))
     } catch { /* no-op */ }
     setText('')
+  }
+
+  const handleDelete = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation()
+    const updated = experiences.filter((exp) => exp.id !== id)
+    setExperiences(updated)
+    try {
+      const user = updated.filter((e) => e.id.startsWith('eu-'))
+      localStorage.setItem(EXPERIENCES_KEY, JSON.stringify(user))
+    } catch { /* no-op */ }
+    if (selectedExp?.id === id) setSelectedExp(null)
   }
 
   return (
@@ -120,7 +132,8 @@ export default function ExperiencesPage() {
           {experiences.map((exp) => (
             <article
               key={exp.id}
-              className="rounded-xl overflow-hidden border-2 border-dashed border-white/10 hover:border-[#c5932a]/40 transition-colors group"
+              onClick={() => setSelectedExp(exp)}
+              className="relative rounded-xl overflow-hidden border-2 border-dashed border-white/10 hover:border-[#c5932a]/40 transition-colors group cursor-pointer"
             >
               {/* Image */}
               <div className="relative h-44 overflow-hidden">
@@ -132,21 +145,90 @@ export default function ExperiencesPage() {
                   sizes="(max-width: 640px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071510]/90 via-[#071510]/30 to-transparent" />
+                
+                {/* Delete button for user added exps */}
+                {exp.id.startsWith('eu-') && (
+                  <button
+                    onClick={(e) => handleDelete(exp.id, e)}
+                    className="absolute top-2 right-2 p-1.5 rounded-lg bg-red-500/80 hover:bg-red-600 text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                  >
+                    <Trash2 size={12} />
+                  </button>
+                )}
+
                 {/* Caption overlay */}
                 <p className="absolute bottom-2 left-3 right-3 text-white text-[11px] leading-snug line-clamp-2">
-                  {exp.text.length > 55 ? exp.text.slice(0, 55) + '...' : exp.text}
+                  {exp.text}
                 </p>
               </div>
               {/* Footer */}
-              <div className="px-3 py-2 bg-charcoal-900">
+              <div className="px-3 py-2 bg-charcoal-900 border-t border-white/5">
                 <p className="text-white text-xs font-semibold line-clamp-1">{exp.siteName}</p>
-                <p className="text-gray-500 text-[10px] flex items-center gap-1 mt-0.5">
-                  <MapPin size={9} /> {exp.siteName}
-                </p>
+                <div className="flex items-center justify-between mt-0.5">
+                  <p className="text-gray-500 text-[10px] flex items-center gap-1">
+                    <MapPin size={9} /> {exp.siteName}
+                  </p>
+                  <p className="text-gray-600 text-[9px]">{exp.date}</p>
+                </div>
               </div>
             </article>
           ))}
         </div>
+
+        {/* ── EXPERIENCE DETAIL MODAL ── */}
+        {selectedExp && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 transition-opacity duration-300">
+            <div 
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              onClick={() => setSelectedExp(null)}
+            />
+            <div className="relative w-full max-w-xl bg-charcoal-900 border border-white/10 rounded-2xl overflow-hidden shadow-2xl scale-100 transition-transform duration-300">
+              <button 
+                onClick={() => setSelectedExp(null)}
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="relative h-64">
+                <Image
+                  src={selectedExp.image}
+                  alt={selectedExp.siteName}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-transparent to-transparent" />
+              </div>
+
+              <div className="p-8 space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-bold text-white">{selectedExp.siteName}</h3>
+                  <div className="text-right text-xs text-gray-400">
+                     <p className="font-semibold text-gold-500">{selectedExp.author}</p>
+                     <p>{selectedExp.date}</p>
+                  </div>
+                </div>
+                
+                <div className="h-0.5 w-12 bg-gold-600/60 rounded-full" />
+
+                <p className="text-gray-200 text-lg leading-relaxed font-medium">
+                  "{selectedExp.text}"
+                </p>
+
+                <div className="pt-6 flex justify-end">
+                   {selectedExp.id.startsWith('eu-') && (
+                     <button
+                       onClick={(e) => handleDelete(selectedExp.id, e)}
+                       className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-500 text-sm font-semibold transition-colors"
+                     >
+                       <Trash2 size={16} /> Delete Trial
+                     </button>
+                   )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
