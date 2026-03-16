@@ -288,7 +288,7 @@ export default function RegionsPage() {
               <div className="relative w-full aspect-[16/10] rounded-[2.5rem] overflow-hidden border-4 border-dashed border-[#c5932a] p-2 shadow-[0_40px_80px_rgba(0,0,0,0.6)] transition-transform hover:scale-[1.02]">
                 <div className="relative w-full h-full rounded-[1.8rem] overflow-hidden">
                   <Image
-                    src="/assets/Aburi-Botanical-Gardens 1.jpg"
+                    src="/assets/aburi-botanical-gardens.jpg"
                     alt="Aburi Botanical Gardens View"
                     fill
                     className="object-cover"
@@ -338,11 +338,11 @@ export default function RegionsPage() {
             {/* ROW 1: 5 small images in an UPWARD BENDING ARC (Valley/Smile Shape: Edges High, Center Low) */}
             <div className="grid grid-cols-10 gap-2 md:gap-5 items-center mb-24">
               {[
-                { src: "/assets/Accra-Ghana 2.jpg", y: "-translate-y-10", s: "scale-100" },
-                { src: "/assets/kakum 3.jpg", y: "translate-y-0", s: "scale-90" },
-                { src: "/assets/Lake-Volta 2.png", y: "translate-y-8", s: "scale-110" },
-                { src: "/assets/gcnhh 2.jpg", y: "translate-y-0", s: "scale-90" },
-                { src: "/assets/asenema-falls-ghana 2.jpg", y: "-translate-y-10", s: "scale-100" }
+                { src: "/assets/accra-ghana.jpg", y: "-translate-y-10", s: "scale-100" },
+                { src: "/assets/kakum-3.jpg", y: "translate-y-0", s: "scale-90" },
+                { src: "/assets/lake-volta.png", y: "translate-y-8", s: "scale-110" },
+                { src: "/assets/gcnhh.jpg", y: "translate-y-0", s: "scale-90" },
+                { src: "/assets/asenema-falls.jpg", y: "-translate-y-10", s: "scale-100" }
               ].map((img, idx) => (
                 <div key={`r1-${idx}`} className={`col-span-2 aspect-[4/3] relative rounded-xl md:rounded-[2.2rem] overflow-hidden border-2 md:border-[3px] border-dashed border-[#c5932a]/90 p-0.5 md:p-1.5 shadow-[0_25px_45px_rgba(0,0,0,0.6)] hover:scale-115 hover:z-50 transition-all duration-500 cursor-pointer ${img.y} ${img.s} z-10`}>
                   <div className="relative w-full h-full rounded-lg md:rounded-[1.8rem] overflow-hidden">
@@ -356,12 +356,12 @@ export default function RegionsPage() {
             <div className="grid grid-cols-10 gap-5 md:gap-12 mb-28 mt-24">
               <div className="col-span-5 aspect-[16/10] relative rounded-3xl md:rounded-[3.5rem] overflow-hidden border-2 md:border-[6px] border-dashed border-[#c5932a]/90 p-0.5 md:p-2 shadow-[0_45px_90px_rgba(0,0,0,0.9)] scale-[1.02] hover:scale-[1.06] hover:z-50 transition-all duration-700 cursor-pointer -rotate-1 translate-x-2">
                 <div className="relative w-full h-full rounded-2xl md:rounded-[3rem] overflow-hidden">
-                  <Image src="/assets/aburi 2.png" alt="Featured Resort" fill className="object-cover" />
+                  <Image src="/assets/aburi-2.png" alt="Featured Resort" fill className="object-cover" />
                 </div>
               </div>
               <div className="col-span-5 aspect-[16/10] relative rounded-3xl md:rounded-[3.5rem] overflow-hidden border-2 md:border-[6px] border-dashed border-[#c5932a]/90 p-0.5 md:p-2 shadow-[0_45px_90px_rgba(0,0,0,0.9)] scale-[1.02] hover:scale-[1.06] hover:z-50 transition-all duration-700 cursor-pointer rotate-1 -translate-x-2">
                 <div className="relative w-full h-full rounded-2xl md:rounded-[3rem] overflow-hidden">
-                  <Image src="/assets/sogakope 1.png" alt="Pool side" fill className="object-cover" />
+                  <Image src="/assets/sogakope.png" alt="Pool side" fill className="object-cover" />
                 </div>
               </div>
             </div>
@@ -369,11 +369,11 @@ export default function RegionsPage() {
             {/* ROW 3: 5 small images in an UPWARD MOUNTAIN ARC */}
             <div className="grid grid-cols-10 gap-2 md:gap-5 items-center mt-20">
               {[
-                { src: "/assets/mesoleum 2.jpg", y: "translate-y-10", s: "scale-90" },
-                { src: "/assets/rock 2.jpg", y: "translate-y-0", s: "scale-100" },
-                { src: "/assets/hbo 2.jpg", y: "-translate-y-8", s: "scale-120" },
-                { src: "/assets/mmmm 2.jpg", y: "translate-y-0", s: "scale-100" },
-                { src: "/assets/nzulenzu 2.jpg", y: "translate-y-10", s: "scale-90" }
+                { src: "/assets/mesoleum.jpg", y: "translate-y-10", s: "scale-90" },
+                { src: "/assets/rock.jpg", y: "translate-y-0", s: "scale-100" },
+                { src: "/assets/hbo.jpg", y: "-translate-y-8", s: "scale-120" },
+                { src: "/assets/mmmm.jpg", y: "translate-y-0", s: "scale-100" },
+                { src: "/assets/nzulenzu.jpg", y: "translate-y-10", s: "scale-90" }
               ].map((img, idx) => (
                 <div key={`r3-${idx}`} className={`col-span-2 aspect-[4/3] relative rounded-xl md:rounded-[2.2rem] overflow-hidden border-2 md:border-[3px] border-dashed border-[#c5932a]/90 p-0.5 md:p-1.5 shadow-[0_25px_45px_rgba(0,0,0,0.6)] hover:scale-115 hover:z-50 transition-all duration-500 cursor-pointer ${img.y} ${img.s} z-10`}>
                   <div className="relative w-full h-full rounded-lg md:rounded-[1.8rem] overflow-hidden">

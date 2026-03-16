@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { MapPin, X, ExternalLink, Clock, CreditCard } from 'lucide-react'
+import { MapPin, X, ExternalLink, Clock, CreditCard, Star, Calendar, Sparkles } from 'lucide-react'
 import FavoriteButton from './FavoriteButton'
 import type { Destination } from '@/lib/data'
 import locationsDB from '@/lib/locationsdb.json'
@@ -85,37 +85,74 @@ export default function SiteCard({ destination, showFavorite = true }: SiteCardP
                 {destination.category}
               </span>
               <h2 className="text-2xl font-bold text-white mb-2">{destination.name}</h2>
-              <p className="text-gray-400 text-sm mb-6 flex items-center gap-1">
+              <p className="text-gray-400 text-sm mb-4 flex items-center gap-1">
                 <MapPin size={14} /> {destination.location}
               </p>
-              
-              {locationInfo ? (
-                <div className="space-y-4 mb-6 bg-charcoal-950 rounded-xl p-4 border border-white/10">
-                  <div className="flex items-start gap-3">
-                    <Clock size={16} className="text-[#c5932a] mt-0.5" />
-                    <div>
-                      <p className="text-white text-sm font-medium">Opening Hours</p>
-                      <p className="text-gray-400 text-xs">{locationInfo.openingHours}</p>
-                    </div>
+
+              <div className="space-y-4 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar mb-6">
+                <div>
+                  <h3 className="text-white text-sm font-semibold mb-2 flex items-center gap-2">
+                    <Sparkles size={14} className="text-[#c5932a]" /> Overview
+                  </h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    {destination.description}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <h3 className="text-white text-xs font-semibold mb-1 flex items-center gap-1">
+                      <Calendar size={12} className="text-[#c5932a]" /> Best Time
+                    </h3>
+                    <p className="text-gray-400 text-[11px]">{destination.bestTime}</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CreditCard size={16} className="text-[#c5932a] mt-0.5" />
-                    <div>
-                      <p className="text-white text-sm font-medium">Rates & Entry Info</p>
-                      <p className="text-gray-400 text-xs">{locationInfo.rates}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <MapPin size={16} className="text-[#c5932a] mt-0.5" />
-                    <div>
-                      <p className="text-white text-sm font-medium">GPS Coordinates</p>
-                      <p className="text-gray-400 text-xs font-mono">{locationInfo.gpsCoordinates}</p>
-                    </div>
+                  <div>
+                    <h3 className="text-white text-xs font-semibold mb-1 flex items-center gap-1">
+                      <Star size={12} className="text-[#c5932a]" /> Entry Fee
+                    </h3>
+                    <p className="text-gray-400 text-[11px]">{destination.entryFee || 'Free/Varies'}</p>
                   </div>
                 </div>
-              ) : (
-                <p className="text-gray-400 text-sm mb-6 italic">No extended location data available.</p>
-              )}
+
+                <div>
+                  <h3 className="text-white text-sm font-semibold mb-2 flex items-center gap-2">
+                    <MapPin size={14} className="text-[#c5932a]" /> Activities
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {destination.activities.map(act => (
+                      <span key={act} className="px-2 py-1 rounded-md bg-white/5 text-gray-400 text-[10px] border border-white/5">
+                        {act}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {locationInfo && (
+                  <div className="space-y-4 bg-charcoal-950 rounded-xl p-4 border border-white/10">
+                    <div className="flex items-start gap-3">
+                      <Clock size={16} className="text-[#c5932a] mt-0.5" />
+                      <div>
+                        <p className="text-white text-sm font-medium">Opening Hours</p>
+                        <p className="text-gray-400 text-xs">{locationInfo.openingHours}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CreditCard size={16} className="text-[#c5932a] mt-0.5" />
+                      <div>
+                        <p className="text-white text-sm font-medium">Rates & Entry Info</p>
+                        <p className="text-gray-400 text-xs">{locationInfo.rates}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <MapPin size={16} className="text-[#c5932a] mt-0.5" />
+                      <div>
+                        <p className="text-white text-sm font-medium">GPS Coordinates</p>
+                        <p className="text-gray-400 text-xs font-mono">{locationInfo.gpsCoordinates}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <div className="flex gap-3">
                 {locationInfo && (
