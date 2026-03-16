@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 export default function Footer() {
@@ -16,9 +17,13 @@ export default function Footer() {
       {/* ExpoGH logo centred with lines */}
       <div className="flex items-center justify-center gap-4 mb-10 px-4">
         <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#c5932a]/40" />
-        <Link href="/" className="text-xl font-bold">
-          <span className="text-white">Expo</span>
-          <span className="text-[#c5932a]">GH</span>
+        <Link href="/" className="relative w-28 h-8">
+          <Image 
+            src="/assets/expo-logo-1.png" 
+            alt="ExpoGH Logo" 
+            fill 
+            className="object-contain"
+          />
         </Link>
         <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-transparent to-[#c5932a]/40" />
       </div>

@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     title: "ExpoGH — Discover Ghana",
     description: "Explore Ghana's top tourist destinations with ExpoGH.",
   },
+  icons: {
+    icon: '/assets/expo-logo-1.png',
+  },
 }
 
 export default function RootLayout({

@@ -23,14 +23,16 @@ export default function Navbar() {
     }`}>
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-white/10">
-            <Image src="/assets/expo-logo.jpg" alt="ExpoGH" fill className="object-cover" />
+        <Link href="/" className="flex items-center shrink-0">
+          <div className="relative w-28 h-8">
+            <Image 
+              src="/assets/expo-logo-1.png" 
+              alt="ExpoGH Logo" 
+              fill 
+              className="object-contain"
+              priority
+            />
           </div>
-          <span className="font-bold text-base tracking-wide">
-            <span className="text-white">Expo</span>
-            <span className="text-[#c5932a]">GH</span>
-          </span>
         </Link>
 
         {/* Desktop nav */}

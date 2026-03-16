@@ -247,7 +247,155 @@ export default function RegionsPage() {
           )}
         </div>
       </section>
+
+      {/* ── ABURI BOTANICAL GARDENS SECTION ── */}
+      <section className="px-4 py-16 bg-transparent">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left: Content Card */}
+            <div className="w-full">
+              <div className="bg-[#4a5240]/80 backdrop-blur-md rounded-[2.5rem] p-8 md:p-12 shadow-[0_30px_60px_rgba(0,0,0,0.4)] border border-white/10 space-y-6">
+                <h2 className="text-3xl md:text-5xl font-extrabold text-white text-center">
+                  Aburi Botanical Gardens
+                </h2>
+                <div className="space-y-6 text-gray-200 text-sm md:text-base leading-relaxed font-medium">
+                  <p>
+                    Located in the hills of the Eastern Region near the town of Aburi, the Aburi Botanical Gardens 
+                    is one of Ghana&apos;s most peaceful and scenic natural attractions. Established during the colonial 
+                    period in 1890, the gardens cover a large area filled with tropical plants, towering trees, 
+                    and beautifully maintained lawns.
+                  </p>
+                  <p>
+                    Visitors come to the gardens to enjoy the cool mountain climate, walk through shaded paths, 
+                    and relax in the calm natural environment overlooking parts of the Eastern Region. The gardens 
+                    feature several plant species used for medicinal, ornamental, and research purposes, making 
+                    it both a recreational and educational destination.
+                  </p>
+                  <p>
+                    Because of its serene atmosphere and beautiful landscape, Aburi Botanical Gardens is also 
+                    a popular location for picnics, photography, nature walks, and small events. It offers 
+                    visitors a refreshing escape from the busy city life of nearby Accra while showcasing the 
+                    beauty of Ghana&apos;s plant life and natural environment.
+                  </p>
+                </div>
+              </div>
+            </div>
+  
+            {/* Right: Images Panel */}
+            <div className="w-full space-y-10">
+              {/* Top Image */}
+              <div className="relative w-full aspect-[16/10] rounded-[2.5rem] overflow-hidden border-4 border-dashed border-[#c5932a] p-2 shadow-[0_40px_80px_rgba(0,0,0,0.6)] transition-transform hover:scale-[1.02]">
+                <div className="relative w-full h-full rounded-[1.8rem] overflow-hidden">
+                  <Image
+                    src="/assets/Aburi-Botanical-Gardens 1.jpg"
+                    alt="Aburi Botanical Gardens View"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+  
+              {/* Bottom Map Image */}
+              <div className="space-y-4">
+                <a 
+                  href="https://www.google.com/maps/search/Aburi+Botanical+gardens/@5.8511254,-0.1755178,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative w-full aspect-[16/10] rounded-[2.5rem] overflow-hidden border-4 border-dashed border-[#c5932a] p-2 shadow-[0_40px_80px_rgba(0,0,0,0.6)] cursor-pointer transition-transform hover:scale-[1.02] group"
+                >
+                  <div className="relative w-full h-full rounded-[1.8rem] overflow-hidden">
+                    <Image
+                      src="/assets/map-pin-screenshot.png"
+                      alt="Map directions to Aburi Botanical Gardens"
+                      fill
+                      className="object-cover transition-transform group-hover:scale-105 duration-700"
+                    />
+                  </div>
+                </a>
+                <p className="text-center text-white/70 text-xs md:text-sm font-bold tracking-tight">
+                  Click the map image to open the map and directions
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TOURIST SITES GRID SECTION ── */}
+      <section className="px-4 py-32 bg-transparent relative">
+        <div className="max-w-7xl mx-auto space-y-4">
+          
+          {/* Decorative Divider Top (Valley Curve) */}
+          <div className="flex justify-center mb-28">
+             <div className="w-full max-w-4xl h-[2px] bg-gradient-to-r from-transparent via-[#c5932a]/40 to-transparent relative">
+                <div className="absolute left-1/2 -top-12 -translate-x-1/2 w-80 h-20 opacity-20 bg-[#c5932a] blur-3xl rounded-full"></div>
+                <div className="absolute left-1/2 -top-1 -translate-x-1/2 w-full h-[1.5px] bg-[#c5932a]/50"></div>
+             </div>
+          </div>
+
+          <div className="relative px-2 md:px-0">
+            {/* ROW 1: 5 small images in an UPWARD BENDING ARC (Valley/Smile Shape: Edges High, Center Low) */}
+            <div className="grid grid-cols-10 gap-2 md:gap-5 items-center mb-24">
+              {[
+                { src: "/assets/Accra-Ghana 2.jpg", y: "-translate-y-10", s: "scale-100" },
+                { src: "/assets/kakum 3.jpg", y: "translate-y-0", s: "scale-90" },
+                { src: "/assets/Lake-Volta 2.png", y: "translate-y-8", s: "scale-110" },
+                { src: "/assets/gcnhh 2.jpg", y: "translate-y-0", s: "scale-90" },
+                { src: "/assets/asenema-falls-ghana 2.jpg", y: "-translate-y-10", s: "scale-100" }
+              ].map((img, idx) => (
+                <div key={`r1-${idx}`} className={`col-span-2 aspect-[4/3] relative rounded-xl md:rounded-[2.2rem] overflow-hidden border-2 md:border-[3px] border-dashed border-[#c5932a]/90 p-0.5 md:p-1.5 shadow-[0_25px_45px_rgba(0,0,0,0.6)] hover:scale-115 hover:z-50 transition-all duration-500 cursor-pointer ${img.y} ${img.s} z-10`}>
+                  <div className="relative w-full h-full rounded-lg md:rounded-[1.8rem] overflow-hidden">
+                    <Image src={img.src} alt={`Tourist site ${idx + 1}`} fill className="object-cover" />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ROW 2: 2 large images - Significantly Increased Size */}
+            <div className="grid grid-cols-10 gap-5 md:gap-12 mb-28 mt-24">
+              <div className="col-span-5 aspect-[16/10] relative rounded-3xl md:rounded-[3.5rem] overflow-hidden border-2 md:border-[6px] border-dashed border-[#c5932a]/90 p-0.5 md:p-2 shadow-[0_45px_90px_rgba(0,0,0,0.9)] scale-[1.02] hover:scale-[1.06] hover:z-50 transition-all duration-700 cursor-pointer -rotate-1 translate-x-2">
+                <div className="relative w-full h-full rounded-2xl md:rounded-[3rem] overflow-hidden">
+                  <Image src="/assets/aburi 2.png" alt="Featured Resort" fill className="object-cover" />
+                </div>
+              </div>
+              <div className="col-span-5 aspect-[16/10] relative rounded-3xl md:rounded-[3.5rem] overflow-hidden border-2 md:border-[6px] border-dashed border-[#c5932a]/90 p-0.5 md:p-2 shadow-[0_45px_90px_rgba(0,0,0,0.9)] scale-[1.02] hover:scale-[1.06] hover:z-50 transition-all duration-700 cursor-pointer rotate-1 -translate-x-2">
+                <div className="relative w-full h-full rounded-2xl md:rounded-[3rem] overflow-hidden">
+                  <Image src="/assets/sogakope 1.png" alt="Pool side" fill className="object-cover" />
+                </div>
+              </div>
+            </div>
+
+            {/* ROW 3: 5 small images in an UPWARD MOUNTAIN ARC */}
+            <div className="grid grid-cols-10 gap-2 md:gap-5 items-center mt-20">
+              {[
+                { src: "/assets/mesoleum 2.jpg", y: "translate-y-10", s: "scale-90" },
+                { src: "/assets/rock 2.jpg", y: "translate-y-0", s: "scale-100" },
+                { src: "/assets/hbo 2.jpg", y: "-translate-y-8", s: "scale-120" },
+                { src: "/assets/mmmm 2.jpg", y: "translate-y-0", s: "scale-100" },
+                { src: "/assets/nzulenzu 2.jpg", y: "translate-y-10", s: "scale-90" }
+              ].map((img, idx) => (
+                <div key={`r3-${idx}`} className={`col-span-2 aspect-[4/3] relative rounded-xl md:rounded-[2.2rem] overflow-hidden border-2 md:border-[3px] border-dashed border-[#c5932a]/90 p-0.5 md:p-1.5 shadow-[0_25px_45px_rgba(0,0,0,0.6)] hover:scale-115 hover:z-50 transition-all duration-500 cursor-pointer ${img.y} ${img.s} z-10`}>
+                  <div className="relative w-full h-full rounded-lg md:rounded-[1.8rem] overflow-hidden">
+                    <Image src={img.src} alt={`Tourist site ${idx + 6}`} fill className="object-cover" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Decorative Divider Bottom */}
+          <div className="flex justify-center mt-36">
+             <div className="w-full max-w-4xl h-[2px] bg-gradient-to-r from-transparent via-[#c5932a]/20 to-transparent relative">
+                <div className="absolute left-1/2 -bottom-10 -translate-x-1/2 w-80 h-16 opacity-30 bg-[#c5932a] blur-3xl rounded-full"></div>
+                <div className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-full h-[1px] bg-[#c5932a]/60"></div>
+             </div>
+          </div>
+
+        </div>
+      </section>
       </div>
+
     </div>
   )
 }
