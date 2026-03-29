@@ -25,10 +25,10 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
           <div className="relative w-28 h-8">
-            <Image 
-              src="/assets/expo-logo-1.png" 
-              alt="ExpoGH Logo" 
-              fill 
+            <Image
+              src="/assets/expo-logo-1.png"
+              alt="ExpoGH Logo"
+              fill
               className="object-contain"
               priority
             />

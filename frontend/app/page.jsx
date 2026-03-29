@@ -1,11 +1,10 @@
-import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CATEGORIES } from '@/lib/data'
 import BotiFallsAlternate from '@/components/BotiFallsAlternate'
 import Footer from '@/components/Footer'
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "ExpoGH — Discover Ghana's Culture, Nature & History",
   description:
     "Explore Ghana's stunning national parks, historic castles, vibrant cultures and breathtaking landscapes across all 16 regions.",
@@ -176,15 +175,15 @@ export default function HomePage() {
       {/* ── THE BOTI WATER FALLS & ABOUT ── */}
       <section className="pt-20 pb-4 px-4 relative z-20">
         <div className="max-w-6xl mx-auto">
-          
+
           <div className="text-center relative">
             <h2 className="text-xl md:text-2xl font-bold text-white mb-8">
               The Boti Water falls
             </h2>
-            
+
             <BotiFallsAlternate />
           </div>
-          
+
         </div>
       </section>
 
@@ -224,8 +223,8 @@ export default function HomePage() {
               <div
                 key={tip.title}
                 className={`flex flex-col md:flex-row ${
-                  i % 2 !== 0 
-                    ? 'md:flex-row-reverse self-end md:translate-x-4' 
+                  i % 2 !== 0
+                    ? 'md:flex-row-reverse self-end md:translate-x-4'
                     : 'self-start md:-translate-x-4'
                 } w-full md:w-[70%] rounded-2xl overflow-hidden bg-charcoal-900 border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform hover:scale-[1.02] duration-300 relative`}
               >
@@ -239,7 +238,7 @@ export default function HomePage() {
                     sizes="(max-width: 768px) 100vw, 30vw"
                   />
                 </div>
-                
+
                 {/* Text half */}
                 <div className="w-full md:w-[55%] flex flex-col justify-center text-center md:text-left px-8 py-8 md:px-10">
                   <h3 className="text-white font-bold text-lg md:text-xl mb-3">{tip.title}</h3>

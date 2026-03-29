@@ -5,22 +5,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { MapPin, X, ExternalLink, Clock, CreditCard, Star, Calendar, Sparkles } from 'lucide-react'
 import FavoriteButton from './FavoriteButton'
-import type { Destination } from '@/lib/data'
 import locationsDB from '@/lib/locationsdb.json'
 
-interface SiteCardProps {
-  destination: Destination
-  showFavorite?: boolean
-}
-
-export default function SiteCard({ destination, showFavorite = true }: SiteCardProps) {
+export default function SiteCard({ destination, showFavorite = true }) {
   const [showModal, setShowModal] = useState(false)
   const locationInfo = locationsDB.find((loc) => loc.id === destination.id)
 
   return (
     <>
       <article className="group relative rounded-xl overflow-hidden bg-charcoal-900 border border-white/10 hover:border-[#c5932a]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30">
-        <div 
+        <div
           className="relative h-48 w-full overflow-hidden cursor-pointer"
           onClick={() => setShowModal(true)}
         >
@@ -59,19 +53,19 @@ export default function SiteCard({ destination, showFavorite = true }: SiteCardP
       {/* Pop-up Extended Menu */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div 
+          <div
             className="absolute inset-0"
             onClick={() => setShowModal(false)}
           />
           <div className="bg-charcoal-900 border border-white/10 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200 relative z-10">
-            <button 
+            <button
               onClick={() => setShowModal(false)}
               className="absolute top-4 right-4 z-20 p-2 bg-black/40 hover:bg-black/60 rounded-full text-white transition-colors"
             >
               <X size={16} />
             </button>
             <div className="relative h-56 w-full">
-               <Image
+              <Image
                 src={destination.image}
                 alt={destination.name}
                 fill
@@ -79,7 +73,7 @@ export default function SiteCard({ destination, showFavorite = true }: SiteCardP
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 to-transparent" />
             </div>
-            
+
             <div className="p-6 -mt-8 relative z-10">
               <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c5932a] text-[#071510] mb-3">
                 {destination.category}
@@ -156,7 +150,7 @@ export default function SiteCard({ destination, showFavorite = true }: SiteCardP
 
               <div className="flex gap-3">
                 {locationInfo && (
-                  <a 
+                  <a
                     href={locationInfo.mapLink}
                     target="_blank"
                     rel="noopener noreferrer"

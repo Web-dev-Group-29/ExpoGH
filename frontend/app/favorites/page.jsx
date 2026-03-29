@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { destinations, type Destination } from '@/lib/data'
+import { destinations } from '@/lib/data'
 import { getFavorites } from '@/lib/favorites'
 import FavoriteButton from '@/components/FavoriteButton'
 
@@ -18,7 +18,7 @@ const THUMBNAIL_IDS = [
   'labadi-beach',
 ]
 
-function DestCard({ dest }: { dest: Destination }) {
+function DestCard({ dest }) {
   return (
     <div className="group relative rounded-xl overflow-hidden bg-charcoal-900 border border-white/10 hover:border-[#c5932a]/40 transition-all hover:-translate-y-1">
       <div className="relative h-44">
@@ -52,7 +52,7 @@ function DestCard({ dest }: { dest: Destination }) {
 }
 
 export default function FavoritesPage() {
-  const [favoriteIds, setFavoriteIds] = useState<string[]>([])
+  const [favoriteIds, setFavoriteIds] = useState([])
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function FavoritesPage() {
   const favDestinations = destinations.filter((d) => favoriteIds.includes(d.id))
   const thumbDests = THUMBNAIL_IDS
     .map((id) => destinations.find((d) => d.id === id))
-    .filter((d): d is Destination => Boolean(d))
+    .filter((d) => Boolean(d))
 
   const verticalOffsets = [0, -12, 8, -6, 14, -10, 4, -8]
 

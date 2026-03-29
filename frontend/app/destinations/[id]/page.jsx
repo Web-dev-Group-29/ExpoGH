@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -7,13 +6,11 @@ import { destinations } from '@/lib/data'
 import FavoriteButton from '@/components/FavoriteButton'
 import locationsDB from '@/lib/locationsdb.json'
 
-interface PageProps { params: Promise<{ id: string }> }
-
 export async function generateStaticParams() {
   return destinations.map((d) => ({ id: d.id }))
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }) {
   const { id } = await params
   const d = destinations.find((x) => x.id === id)
   if (!d) return {}
@@ -44,7 +41,7 @@ const lodgingCards = [
   },
 ]
 
-export default async function DestinationPage({ params }: PageProps) {
+export default async function DestinationPage({ params }) {
   const { id } = await params
   const destination = destinations.find((d) => d.id === id)
   if (!destination) notFound()
@@ -100,7 +97,7 @@ export default async function DestinationPage({ params }: PageProps) {
       {/* ── MAIN CONTENT (ABOUT) ── */}
       <section className="py-12 px-4 relative -mt-10 z-20">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-          
+
           {/* Left: Content Box */}
           <div className="lg:col-span-3 bg-forest-800/40 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-white/5 shadow-2xl">
             <h1 className="text-2xl md:text-3xl font-extrabold text-white mb-6 text-center">
@@ -129,9 +126,9 @@ export default async function DestinationPage({ params }: PageProps) {
 
             {/* Map Interaction */}
             <div className="space-y-3">
-              <a 
-                href={locationsDB.find(l => l.id === destination.id)?.mapLink || '#'} 
-                target="_blank" 
+              <a
+                href={locationsDB.find(l => l.id === destination.id)?.mapLink || '#'}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="block group"
               >

@@ -1,43 +1,8 @@
-export interface Destination {
-  id: string
-  name: string
-  region: string
-  category: Category
-  description: string
-  shortDescription: string
-  image: string
-  gallery: string[]
-  location: string
-  highlights: string[]
-  bestTime: string
-  entryFee?: string
-  activities: string[]
-}
-
-export interface Experience {
-  id: string
-  siteId: string
-  siteName: string
-  image: string
-  text: string
-  author: string
-  date: string
-}
-
-export type Category =
-  | 'Nature'
-  | 'Historical'
-  | 'Cultural'
-  | 'Adventure'
-  | 'Spiritual'
-  | 'Urban'
-  | 'Festivals'
-
-export const CATEGORIES: Category[] = [
+export const CATEGORIES = [
   'Nature', 'Historical', 'Cultural', 'Adventure', 'Spiritual', 'Urban', 'Festivals',
 ]
 
-export const destinations: Destination[] = [
+export const destinations = [
   {
     id: 'aburi-botanical-gardens',
     name: 'Aburi Botanical Gardens',

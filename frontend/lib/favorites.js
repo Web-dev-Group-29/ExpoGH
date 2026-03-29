@@ -2,7 +2,7 @@
 
 const FAVORITES_KEY = 'expogh_favorites'
 
-export function getFavorites(): string[] {
+export function getFavorites() {
   if (typeof window === 'undefined') return []
   try {
     const stored = localStorage.getItem(FAVORITES_KEY)
@@ -12,7 +12,7 @@ export function getFavorites(): string[] {
   }
 }
 
-export function toggleFavorite(id: string): string[] {
+export function toggleFavorite(id) {
   const current = getFavorites()
   const updated = current.includes(id)
     ? current.filter((fav) => fav !== id)
@@ -21,6 +21,6 @@ export function toggleFavorite(id: string): string[] {
   return updated
 }
 
-export function isFavorite(id: string): boolean {
+export function isFavorite(id) {
   return getFavorites().includes(id)
 }

@@ -12,16 +12,16 @@ export default function Footer() {
     <footer className="relative pt-20 pb-8 transition-colors">
       {/* Top Gradient Blend */}
       <div className="absolute top-0 left-0 right-0 h-24 -translate-y-[99%] pointer-events-none bg-gradient-to-t from-charcoal-900 to-transparent" />
-      
+
       <div className="absolute inset-0 z-[-1] bg-charcoal-900" />
       {/* ExpoGH logo centred with lines */}
       <div className="flex items-center justify-center gap-4 mb-10 px-4">
         <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#c5932a]/40" />
         <Link href="/" className="relative w-28 h-8">
-          <Image 
-            src="/assets/expo-logo-1.png" 
-            alt="ExpoGH Logo" 
-            fill 
+          <Image
+            src="/assets/expo-logo-1.png"
+            alt="ExpoGH Logo"
+            fill
             className="object-contain"
           />
         </Link>

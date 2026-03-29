@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Plus, MapPin, X, Trash2 } from 'lucide-react'
-import { destinations, type Experience } from '@/lib/data'
+import { destinations } from '@/lib/data'
 
 const EXPERIENCES_KEY = 'expogh_experiences'
 
-const INITIAL: Experience[] = [
+const INITIAL = [
   { id: 'e1', siteId: 'aburi-botanical-gardens', siteName: 'Aburi Botanical Gardens',
     image: '/assets/aburi-botanical-gardens.jpg',
     text: 'I had a great time at the aburi botanical gardens. The fresh air and colonial-era pathways are unforgettable!',
@@ -43,16 +43,16 @@ const INITIAL: Experience[] = [
 ]
 
 export default function ExperiencesPage() {
-  const [experiences, setExperiences] = useState<Experience[]>(INITIAL)
+  const [experiences, setExperiences] = useState(INITIAL)
   const [text, setText] = useState('')
   const [selectedSite, setSelectedSite] = useState(destinations[0].id)
-  const [selectedExp, setSelectedExp] = useState<Experience | null>(null)
+  const [selectedExp, setSelectedExp] = useState(null)
 
   useEffect(() => {
     try {
       const stored = localStorage.getItem(EXPERIENCES_KEY)
       if (stored) {
-        const user: Experience[] = JSON.parse(stored)
+        const user = JSON.parse(stored)
         setExperiences([...user, ...INITIAL])
       }
     } catch { /* no-op */ }
@@ -60,8 +60,8 @@ export default function ExperiencesPage() {
 
   const handleAdd = () => {
     if (!text.trim()) return
-    const site = destinations.find((d) => d.id === selectedSite)!
-    const exp: Experience = {
+    const site = destinations.find((d) => d.id === selectedSite)
+    const exp = {
       id: `eu-${Date.now()}`,
       siteId: selectedSite,
       siteName: site.name,
@@ -79,7 +79,7 @@ export default function ExperiencesPage() {
     setText('')
   }
 
-  const handleDelete = (id: string, e: React.MouseEvent) => {
+  const handleDelete = (id, e) => {
     e.stopPropagation()
     const updated = experiences.filter((exp) => exp.id !== id)
     setExperiences(updated)
@@ -145,7 +145,7 @@ export default function ExperiencesPage() {
                   sizes="(max-width: 640px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071510]/90 via-[#071510]/30 to-transparent" />
-                
+
                 {/* Delete button for user added exps */}
                 {exp.id.startsWith('eu-') && (
                   <button
@@ -178,12 +178,12 @@ export default function ExperiencesPage() {
         {/* ── EXPERIENCE DETAIL MODAL ── */}
         {selectedExp && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 transition-opacity duration-300">
-            <div 
+            <div
               className="absolute inset-0 bg-black/80 backdrop-blur-sm"
               onClick={() => setSelectedExp(null)}
             />
             <div className="relative w-full max-w-xl bg-charcoal-900 border border-white/10 rounded-2xl overflow-hidden shadow-2xl scale-100 transition-transform duration-300">
-              <button 
+              <button
                 onClick={() => setSelectedExp(null)}
                 className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
               >
@@ -204,11 +204,11 @@ export default function ExperiencesPage() {
                 <div className="flex items-center justify-between">
                   <h3 className="text-2xl font-bold text-white">{selectedExp.siteName}</h3>
                   <div className="text-right text-xs text-gray-400">
-                     <p className="font-semibold text-gold-500">{selectedExp.author}</p>
-                     <p>{selectedExp.date}</p>
+                    <p className="font-semibold text-gold-500">{selectedExp.author}</p>
+                    <p>{selectedExp.date}</p>
                   </div>
                 </div>
-                
+
                 <div className="h-0.5 w-12 bg-gold-600/60 rounded-full" />
 
                 <p className="text-gray-200 text-lg leading-relaxed font-medium">
@@ -216,14 +216,14 @@ export default function ExperiencesPage() {
                 </p>
 
                 <div className="pt-6 flex justify-end">
-                   {selectedExp.id.startsWith('eu-') && (
-                     <button
-                       onClick={(e) => handleDelete(selectedExp.id, e)}
-                       className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-500 text-sm font-semibold transition-colors"
-                     >
-                       <Trash2 size={16} /> Delete Trial
-                     </button>
-                   )}
+                  {selectedExp.id.startsWith('eu-') && (
+                    <button
+                      onClick={(e) => handleDelete(selectedExp.id, e)}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-500 text-sm font-semibold transition-colors"
+                    >
+                      <Trash2 size={16} /> Delete Trial
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

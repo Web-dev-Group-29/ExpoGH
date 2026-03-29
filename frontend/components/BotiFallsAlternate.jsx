@@ -46,7 +46,7 @@ export default function BotiFallsAlternate() {
 
   return (
     <div className="relative flex justify-center h-56 md:h-[400px] w-full max-w-[700px] mx-auto z-20">
-      
+
       {/* Floating Images (Left Top) */}
       <div className={`hidden lg:block absolute border-[3px] border-dashed border-[#c5932a] rounded-2xl overflow-hidden w-40 h-32 transform -rotate-6 transition-all duration-1000 ease-in-out ${current.positions.leftTop}`}>
         <Image src={current.leftTopImg} fill className="object-cover" alt="Kakum Walkway" />
@@ -59,17 +59,17 @@ export default function BotiFallsAlternate() {
 
       {/* Floating Images (Right Top) */}
       <div className={`hidden lg:block absolute border-[3px] border-dashed border-[#c5932a] rounded-2xl overflow-hidden w-36 h-28 transform rotate-6 transition-all duration-1000 ease-in-out ${current.positions.rightTop}`}>
-        <Image 
-          src={states[0].rightTopImg} 
-          fill 
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${activeIdx === 0 ? 'opacity-100' : 'opacity-0'}`} 
-          alt="Top Right 1" 
+        <Image
+          src={states[0].rightTopImg}
+          fill
+          className={`object-cover transition-opacity duration-1000 ease-in-out ${activeIdx === 0 ? 'opacity-100' : 'opacity-0'}`}
+          alt="Top Right 1"
         />
-        <Image 
-          src={states[1].rightTopImg} 
-          fill 
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${activeIdx === 1 ? 'opacity-100' : 'opacity-0'}`} 
-          alt="Top Right 2" 
+        <Image
+          src={states[1].rightTopImg}
+          fill
+          className={`object-cover transition-opacity duration-1000 ease-in-out ${activeIdx === 1 ? 'opacity-100' : 'opacity-0'}`}
+          alt="Top Right 2"
         />
       </div>
 

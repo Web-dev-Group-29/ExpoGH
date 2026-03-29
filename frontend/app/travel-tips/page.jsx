@@ -35,10 +35,10 @@ export default function TravelTipsPage() {
   return (
     <div className="min-h-screen bg-charcoal-950 pt-20 pb-20">
       <div className="max-w-6xl mx-auto px-4">
-        
+
         {/* Hero Section */}
         <section className="relative rounded-3xl overflow-hidden mb-16 h-[40vh] min-h-[300px]">
-          <Image 
+          <Image
             src="/assets/tour-sites.jpg"
             alt="Ghana Travel Header"
             fill
@@ -92,8 +92,8 @@ export default function TravelTipsPage() {
                   </div>
                 ))}
               </div>
-              <Link 
-                href="/regions" 
+              <Link
+                href="/regions"
                 className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-[#c5932a] text-charcoal-950 font-bold rounded-xl hover:bg-[#d4a528] transition-colors"
               >
                 <Navigation size={18} /> Start Exploring

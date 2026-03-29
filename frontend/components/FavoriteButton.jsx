@@ -4,17 +4,12 @@ import { Heart } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { toggleFavorite, isFavorite } from '@/lib/favorites'
 
-interface FavoriteButtonProps {
-  id: string
-  size?: 'sm' | 'md'
-}
-
-export default function FavoriteButton({ id, size = 'sm' }: FavoriteButtonProps) {
+export default function FavoriteButton({ id, size = 'sm' }) {
   const [saved, setSaved] = useState(false)
 
   useEffect(() => { setSaved(isFavorite(id)) }, [id])
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e) => {
     e.preventDefault()
     e.stopPropagation()
     const updated = toggleFavorite(id)
