@@ -67,8 +67,7 @@ export default function DestinationPage() {
       <section className="dest-hero">
         <img
           src={destination.image}
-          alt={destination.name} className="fill-img"
-        />
+          alt={destination.name} className="fill-img" loading="eager" decoding="async" />
         <div className="dest-hero-gradient" />
 
         <div className="dest-back">
@@ -120,8 +119,7 @@ export default function DestinationPage() {
             <div className="dest-side-img">
               <img
                 src={destination.gallery[1] ?? destination.image}
-                alt={`${destination.name} scenery`} className="fill-img"
-              />
+                alt={`${destination.name} scenery`} className="fill-img" loading="lazy" decoding="async" />
             </div>
 
             {/* Map Interaction */}
@@ -135,8 +133,7 @@ export default function DestinationPage() {
                 <div className="dest-side-img" style={{ transition: 'all 200ms' }}>
                   <img
                     src="/assets/map-pin-screenshot.png"
-                    alt="Map Location and Directions" className="fill-img"
-                  />
+                    alt="Map Location and Directions" className="fill-img" loading="lazy" decoding="async" />
                   <div className="dest-map-overlay" />
                 </div>
               </a>

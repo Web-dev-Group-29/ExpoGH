@@ -16,7 +16,7 @@ export default function SiteCard({ destination, showFavorite = true }) {
         <div className="site-card-img" onClick={() => setShowModal(true)}>
           <img
             src={destination.image}
-            alt={destination.name} className="fill-img" />
+            alt={destination.name} className="fill-img" loading="lazy" decoding="async" />
           <div className="site-card-gradient" />
           <span className="site-card-badge">{destination.category}</span>
           {showFavorite && (
@@ -46,7 +46,7 @@ export default function SiteCard({ destination, showFavorite = true }) {
               <X size={16} />
             </button>
             <div className="site-modal-image">
-              <img src={destination.image} alt={destination.name} className="fill-img" />
+              <img src={destination.image} alt={destination.name} className="fill-img" loading="lazy" decoding="async" />
               <div className="site-modal-image-gradient" />
             </div>
 

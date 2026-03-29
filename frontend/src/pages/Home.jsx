@@ -30,7 +30,7 @@ export default function HomePage() {
       {/* ── HERO & REGIONS ── */}
       <section className="home-hero">
         <div className="home-hero-bg">
-          <img src="/assets/mountain-forest.jpg" alt="Aerial view of Ghana — explore the country's diverse regions" className="object-cover" />
+          <img src="/assets/mountain-forest.jpg" alt="Aerial view of Ghana — explore the country's diverse regions" className="object-cover" loading="eager" decoding="async" />
           <div className="home-hero-overlay" />
         </div>
 
@@ -45,7 +45,7 @@ export default function HomePage() {
 
         <div className="home-regions">
           <div className="home-map-wrap">
-            <img src="/assets/adobe-ghana.png" alt="Map of Ghana showing all 16 regions with colour coding" width={420} height={460} className="home-map-img" />
+            <img src="/assets/adobe-ghana.png" alt="Map of Ghana showing all 16 regions with colour coding" width={420} height={460} className="home-map-img" loading="lazy" decoding="async" />
           </div>
           <div className="home-region-card">
             <h2 className="home-region-title">Explore Ghana by Region</h2>
@@ -112,7 +112,7 @@ export default function HomePage() {
             {travelTips.map((tip, i) => (
               <div key={tip.title} className={`home-tip-card ${i % 2 !== 0 ? 'tip-reverse' : 'tip-normal'}`}>
                 <div className="home-tip-img">
-                  <img src={tip.image} alt={tip.imageAlt} className="fill-img" />
+                  <img src={tip.image} alt={tip.imageAlt} className="fill-img" loading="lazy" decoding="async" />
                 </div>
                 <div className="home-tip-text">
                   <h3 className="home-tip-title">{tip.title}</h3>
@@ -131,7 +131,7 @@ export default function HomePage() {
           <div className="home-why-grid">
             {whyCards.map((card) => (
               <div key={card.title} className="home-why-card">
-                <img src={card.image} alt={card.imageAlt} className="fill-img" />
+                <img src={card.image} alt={card.imageAlt} className="fill-img" loading="lazy" decoding="async" />
                 <div className="home-why-overlay" />
                 <div className="home-why-content">
                   <h3 className="home-why-card-title">{card.title}</h3>
