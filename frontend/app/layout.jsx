@@ -63,7 +63,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ThemeProvider>
           <Navbar />
-          <main className="min-h-screen pt-16">{children}</main>
+          <main style={{ minHeight: '100vh', paddingTop: '4rem' }}>{children}</main>
         </ThemeProvider>
       </body>
     </html>

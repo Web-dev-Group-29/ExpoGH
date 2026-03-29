@@ -20,78 +20,48 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 0)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  let navbarClasses = 'fixed top-0 left-0 right-0 z-50 transition-all duration-300 '
-
-  if (isScrolled) {
-    navbarClasses += 'backdrop-blur-md '
-    navbarClasses += 'bg-white/80 dark:bg-charcoal-950/80 border-b border-gray-200/50 dark:border-white/5'
-  } else {
-    navbarClasses += 'bg-white dark:bg-charcoal-950/90 border-b border-gray-200 dark:border-white/10'
-  }
-
   return (
-    <header className={navbarClasses}>
-      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center shrink-0">
-          <div className="relative w-28 h-8">
-            <Image
-              src="/assets/expo-logo-1.png"
-              alt="ExpoGH Logo"
-              fill
-              className="object-contain"
-              priority
-            />
+    <header className={`navbar${isScrolled ? ' scrolled' : ''}`}>
+      <div className="navbar-inner">
+        <Link href="/" className="nav-logo">
+          <div className="nav-logo-img">
+            <Image src="/assets/expo-logo-1.png" alt="ExpoGH Logo" fill className="object-contain" priority />
           </div>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="nav-desktop">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm transition-colors ${
-                pathname === link.href
-                  ? 'text-[#c5932a]'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-[#c5932a]'
-              }`}
+              className={`nav-link${pathname === link.href ? ' nav-link-active' : ''}`}
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Theme Toggle & Mobile Menu */}
-        <div className="flex items-center gap-4">
+        <div className="nav-right">
           <ThemeToggle />
-          {/* Mobile toggle */}
-          <button
-            className="md:hidden text-gray-700 dark:text-white"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
+          <button className="nav-mobile-toggle" onClick={() => setOpen(!open)} aria-label="Toggle menu">
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
-        <nav className="md:hidden bg-gray-50 dark:bg-charcoal-900 border-t border-gray-200 dark:border-white/10 px-4 py-4 flex flex-col gap-4">
+        <nav className="nav-mobile-menu">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className={`text-sm ${pathname === link.href ? 'text-[#c5932a]' : 'text-gray-700 dark:text-gray-300'}`}
+              className={`nav-link${pathname === link.href ? ' nav-link-active' : ''}`}
             >
               {link.label}
             </Link>

@@ -11,10 +11,10 @@ const states = [
     rightTopImg: '/assets/mesoleum.jpg',
     rightBotImg: '/assets/hoooo.jpg',
     positions: {
-      leftTop: '-left-20 top-6 z-30',
-      leftBot: '-left-12 -bottom-12 z-30',
-      rightTop: '-right-24 top-6 z-30',
-      rightBot: '-right-16 -bottom-12 z-30',
+      leftTop: { left: '-5rem', top: '1.5rem', zIndex: 30 },
+      leftBot: { left: '-3rem', bottom: '-3rem', zIndex: 30 },
+      rightTop: { right: '-6rem', top: '1.5rem', zIndex: 30 },
+      rightBot: { right: '-4rem', bottom: '-3rem', zIndex: 30 },
     }
   },
   {
@@ -24,10 +24,10 @@ const states = [
     rightTopImg: '/assets/cytuh.jpg',
     rightBotImg: '/assets/hoooo.jpg',
     positions: {
-      leftTop: '-left-48 top-20 scale-110 z-30',
-      leftBot: '-left-36 -bottom-2 scale-110 z-30',
-      rightTop: '-right-48 top-20 scale-110 z-30',
-      rightBot: '-right-40 -bottom-16 scale-110 z-30',
+      leftTop: { left: '-12rem', top: '5rem', transform: 'scale(1.1)', zIndex: 30 },
+      leftBot: { left: '-9rem', bottom: '-0.5rem', transform: 'scale(1.1)', zIndex: 30 },
+      rightTop: { right: '-12rem', top: '5rem', transform: 'scale(1.1)', zIndex: 30 },
+      rightBot: { right: '-10rem', bottom: '-4rem', transform: 'scale(1.1)', zIndex: 30 },
     }
   }
 ]
@@ -44,55 +44,41 @@ export default function BotiFallsAlternate() {
 
   const current = states[activeIdx]
 
-  return (
-    <div className="relative flex justify-center h-56 md:h-[400px] w-full max-w-[700px] mx-auto z-20">
+  const floatBase = {
+    border: '3px dashed #c5932a',
+    borderRadius: '1rem',
+    overflow: 'hidden',
+    transition: 'all 1000ms ease-in-out',
+    position: 'absolute',
+  }
 
-      {/* Floating Images (Left Top) */}
-      <div className={`hidden lg:block absolute border-[3px] border-dashed border-[#c5932a] rounded-2xl overflow-hidden w-40 h-32 transform -rotate-6 transition-all duration-1000 ease-in-out ${current.positions.leftTop}`}>
+  return (
+    <div className="boti-container">
+      {/* Left Top */}
+      <div className="boti-float" style={{ ...current.positions.leftTop, width: '10rem', height: '8rem', transform: `rotate(-6deg) ${current.positions.leftTop.transform || ''}` }}>
         <Image src={current.leftTopImg} fill className="object-cover" alt="Kakum Walkway" />
       </div>
 
-      {/* Floating Images (Left Bot) */}
-      <div className={`hidden lg:block absolute border-[3px] border-dashed border-[#c5932a] rounded-2xl overflow-hidden w-28 h-28 transform rotate-3 transition-all duration-1000 ease-in-out ${current.positions.leftBot}`}>
+      {/* Left Bot */}
+      <div className="boti-float" style={{ ...current.positions.leftBot, width: '7rem', height: '7rem', transform: `rotate(3deg) ${current.positions.leftBot.transform || ''}` }}>
         <Image src={current.leftBotImg} fill className="object-cover" alt="Larabanga" />
       </div>
 
-      {/* Floating Images (Right Top) */}
-      <div className={`hidden lg:block absolute border-[3px] border-dashed border-[#c5932a] rounded-2xl overflow-hidden w-36 h-28 transform rotate-6 transition-all duration-1000 ease-in-out ${current.positions.rightTop}`}>
-        <Image
-          src={states[0].rightTopImg}
-          fill
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${activeIdx === 0 ? 'opacity-100' : 'opacity-0'}`}
-          alt="Top Right 1"
-        />
-        <Image
-          src={states[1].rightTopImg}
-          fill
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${activeIdx === 1 ? 'opacity-100' : 'opacity-0'}`}
-          alt="Top Right 2"
-        />
+      {/* Right Top */}
+      <div className="boti-float" style={{ ...current.positions.rightTop, width: '9rem', height: '7rem', transform: `rotate(6deg) ${current.positions.rightTop.transform || ''}` }}>
+        <Image src={states[0].rightTopImg} fill style={{ objectFit: 'cover', transition: 'opacity 1000ms ease-in-out', opacity: activeIdx === 0 ? 1 : 0 }} alt="Top Right 1" />
+        <Image src={states[1].rightTopImg} fill style={{ objectFit: 'cover', transition: 'opacity 1000ms ease-in-out', opacity: activeIdx === 1 ? 1 : 0 }} alt="Top Right 2" />
       </div>
 
-      {/* Floating Images (Right Bot) */}
-      <div className={`hidden lg:block absolute border-[3px] border-dashed border-[#c5932a] rounded-2xl overflow-hidden w-40 h-28 transform -rotate-3 transition-all duration-1000 ease-in-out ${current.positions.rightBot}`}>
+      {/* Right Bot */}
+      <div className="boti-float" style={{ ...current.positions.rightBot, width: '10rem', height: '7rem', transform: `rotate(-3deg) ${current.positions.rightBot.transform || ''}` }}>
         <Image src={current.rightBotImg} fill className="object-cover" alt="Bottom Right" />
       </div>
 
-      {/* Center Main Image */}
-      <div className="relative rounded-3xl overflow-hidden w-full h-full shadow-2xl z-20 border-2 border-transparent">
-        {/* We can use two images overlapping and fading their opacity so the transition is smooth */}
-        <Image
-          src={states[0].centerImg}
-          alt="The Boti Water Falls 1"
-          fill
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${activeIdx === 0 ? 'opacity-100' : 'opacity-0'}`}
-        />
-        <Image
-          src={states[1].centerImg}
-          alt="The Boti Water Falls 2"
-          fill
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${activeIdx === 1 ? 'opacity-100' : 'opacity-0'}`}
-        />
+      {/* Center */}
+      <div className="boti-center">
+        <Image src={states[0].centerImg} alt="The Boti Water Falls 1" fill style={{ objectFit: 'cover', transition: 'opacity 1000ms ease-in-out', opacity: activeIdx === 0 ? 1 : 0 }} />
+        <Image src={states[1].centerImg} alt="The Boti Water Falls 2" fill style={{ objectFit: 'cover', transition: 'opacity 1000ms ease-in-out', opacity: activeIdx === 1 ? 1 : 0 }} />
       </div>
     </div>
   )

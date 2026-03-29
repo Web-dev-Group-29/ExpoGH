@@ -9,13 +9,22 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+      style={{
+        padding: '0.5rem',
+        borderRadius: '9999px',
+        transition: 'all 300ms',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+      }}
+      onMouseEnter={e => e.currentTarget.style.backgroundColor = theme === 'dark' ? '#374151' : '#e5e7eb'}
+      onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
       aria-label="Toggle theme"
     >
       {theme === 'dark' ? (
-        <Sun size={20} className="text-yellow-400" />
+        <Sun size={20} style={{ color: '#facc15' }} />
       ) : (
-        <Moon size={20} className="text-gray-700" />
+        <Moon size={20} style={{ color: '#374151' }} />
       )}
     </button>
   )

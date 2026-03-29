@@ -3,18 +3,18 @@ import { MapPin } from 'lucide-react'
 
 export default function NotFound() {
   return (
-    <div className="min-h-[80vh] flex flex-col items-center justify-center text-center px-4">
-      <div className="w-20 h-20 rounded-full bg-forest-800 border border-forest-600/30 flex items-center justify-center mb-6">
-        <MapPin size={32} className="text-gold-500" />
+    <div style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 1rem' }}>
+      <div style={{ width: '5rem', height: '5rem', borderRadius: '9999px', backgroundColor: '#0d2318', border: '1px solid rgba(26,61,46,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+        <MapPin size={32} style={{ color: '#d4a528' }} />
       </div>
-      <h1 className="text-5xl font-bold text-white mb-3">404</h1>
-      <h2 className="text-xl text-gray-300 mb-4">Page Not Found</h2>
-      <p className="text-gray-500 mb-8 max-w-sm">
+      <h1 style={{ fontSize: '3rem', fontWeight: 700, color: '#fff', marginBottom: '0.75rem' }}>404</h1>
+      <h2 style={{ fontSize: '1.25rem', color: '#d1d5db', marginBottom: '1rem' }}>Page Not Found</h2>
+      <p style={{ color: '#6b7280', marginBottom: '2rem', maxWidth: '24rem' }}>
         This destination seems to be off the map. Let&apos;s get you back on track.
       </p>
       <Link
         href="/"
-        className="px-8 py-3 bg-gold-600 hover:bg-gold-500 text-forest-950 font-semibold rounded-full transition-colors"
+        style={{ padding: '0.75rem 2rem', backgroundColor: '#c5922a', color: '#040e08', fontWeight: 600, borderRadius: '9999px', textDecoration: 'none', transition: 'background-color 200ms' }}
       >
         Back to Home
       </Link>
