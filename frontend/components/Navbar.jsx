@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ThemeToggle from './ThemeToggle'
 
 const navLinks = [
@@ -17,13 +17,27 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  let navbarClasses = 'fixed top-0 left-0 right-0 z-50 transition-all duration-300 '
+
+  if (isScrolled) {
+    navbarClasses += 'backdrop-blur-md '
+    navbarClasses += 'bg-white/80 dark:bg-charcoal-950/80 border-b border-gray-200/50 dark:border-white/5'
+  } else {
+    navbarClasses += 'bg-white dark:bg-charcoal-950/90 border-b border-gray-200 dark:border-white/10'
+  }
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-300 ${
-      pathname === '/regions'
-        ? 'bg-black/20 dark:bg-black/20 border-none'
-        : 'bg-white dark:bg-charcoal-950/90 border-b border-gray-200 dark:border-white/10'
-    }`}>
+    <header className={navbarClasses}>
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">

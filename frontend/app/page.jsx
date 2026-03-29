@@ -90,7 +90,7 @@ export default function HomePage() {
             className="object-cover"
           />
           {/* Gradient overlay to fade into the background color at the bottom */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-charcoal-900/80 to-charcoal-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/20 to-white dark:from-black/40 dark:via-charcoal-900/80 dark:to-charcoal-950" />
         </div>
 
         {/* Hero Content */}
