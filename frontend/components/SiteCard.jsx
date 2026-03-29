@@ -13,7 +13,7 @@ export default function SiteCard({ destination, showFavorite = true }) {
 
   return (
     <>
-      <article className="group relative rounded-xl overflow-hidden bg-charcoal-900 border border-white/10 hover:border-[#c5932a]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30">
+      <article className="group relative rounded-xl overflow-hidden bg-gray-100 dark:bg-charcoal-900 border border-gray-300 dark:border-white/10 hover:border-[#c5932a]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-400/20 dark:hover:shadow-black/30">
         <div
           className="relative h-48 w-full overflow-hidden cursor-pointer"
           onClick={() => setShowModal(true)}
@@ -36,14 +36,14 @@ export default function SiteCard({ destination, showFavorite = true }) {
           )}
         </div>
         <div className="p-4">
-          <h3 className="text-white font-semibold text-sm mb-1 line-clamp-1">{destination.name}</h3>
-          <p className="text-gray-500 text-xs flex items-center gap-1 mb-3">
+          <h3 className="text-gray-900 dark:text-white font-semibold text-sm mb-1 line-clamp-1">{destination.name}</h3>
+          <p className="text-gray-600 dark:text-gray-500 text-xs flex items-center gap-1 mb-3">
             <MapPin size={10} /> {destination.location}
           </p>
-          <p className="text-gray-400 text-xs line-clamp-2 mb-4">{destination.shortDescription}</p>
+          <p className="text-gray-700 dark:text-gray-400 text-xs line-clamp-2 mb-4">{destination.shortDescription}</p>
           <Link
             href={`/destinations/${destination.id}`}
-            className="block text-center py-2 px-4 rounded-lg bg-charcoal-800 hover:bg-[#c5932a] hover:text-charcoal-950 text-white text-xs font-semibold transition-colors duration-200"
+            className="block text-center py-2 px-4 rounded-lg bg-gray-200 dark:bg-charcoal-800 hover:bg-[#c5932a] hover:text-white text-gray-900 dark:text-white text-xs font-semibold transition-colors duration-200"
           >
             Explore
           </Link>
@@ -57,10 +57,10 @@ export default function SiteCard({ destination, showFavorite = true }) {
             className="absolute inset-0"
             onClick={() => setShowModal(false)}
           />
-          <div className="bg-charcoal-900 border border-white/10 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200 relative z-10">
+          <div className="bg-white dark:bg-charcoal-900 border border-gray-300 dark:border-white/10 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200 relative z-10">
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 z-20 p-2 bg-black/40 hover:bg-black/60 rounded-full text-white transition-colors"
+              className="absolute top-4 right-4 z-20 p-2 bg-black/40 dark:bg-black/40 hover:bg-black/60 rounded-full text-white transition-colors"
             >
               <X size={16} />
             </button>
@@ -71,50 +71,50 @@ export default function SiteCard({ destination, showFavorite = true }) {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 dark:from-charcoal-900 to-transparent" />
             </div>
 
             <div className="p-6 -mt-8 relative z-10">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c5932a] text-[#071510] mb-3">
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c5932a] text-white mb-3">
                 {destination.category}
               </span>
-              <h2 className="text-2xl font-bold text-white mb-2">{destination.name}</h2>
-              <p className="text-gray-400 text-sm mb-4 flex items-center gap-1">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{destination.name}</h2>
+              <p className="text-gray-700 dark:text-gray-400 text-sm mb-4 flex items-center gap-1">
                 <MapPin size={14} /> {destination.location}
               </p>
 
               <div className="space-y-4 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar mb-6">
                 <div>
-                  <h3 className="text-white text-sm font-semibold mb-2 flex items-center gap-2">
+                  <h3 className="text-gray-900 dark:text-white text-sm font-semibold mb-2 flex items-center gap-2">
                     <Sparkles size={14} className="text-[#c5932a]" /> Overview
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
                     {destination.description}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <h3 className="text-white text-xs font-semibold mb-1 flex items-center gap-1">
+                    <h3 className="text-gray-900 dark:text-white text-xs font-semibold mb-1 flex items-center gap-1">
                       <Calendar size={12} className="text-[#c5932a]" /> Best Time
                     </h3>
-                    <p className="text-gray-400 text-[11px]">{destination.bestTime}</p>
+                    <p className="text-gray-700 dark:text-gray-400 text-[11px]">{destination.bestTime}</p>
                   </div>
                   <div>
-                    <h3 className="text-white text-xs font-semibold mb-1 flex items-center gap-1">
+                    <h3 className="text-gray-900 dark:text-white text-xs font-semibold mb-1 flex items-center gap-1">
                       <Star size={12} className="text-[#c5932a]" /> Entry Fee
                     </h3>
-                    <p className="text-gray-400 text-[11px]">{destination.entryFee || 'Free/Varies'}</p>
+                    <p className="text-gray-700 dark:text-gray-400 text-[11px]">{destination.entryFee || 'Free/Varies'}</p>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-white text-sm font-semibold mb-2 flex items-center gap-2">
+                  <h3 className="text-gray-900 dark:text-white text-sm font-semibold mb-2 flex items-center gap-2">
                     <MapPin size={14} className="text-[#c5932a]" /> Activities
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {destination.activities.map(act => (
-                      <span key={act} className="px-2 py-1 rounded-md bg-white/5 text-gray-400 text-[10px] border border-white/5">
+                      <span key={act} className="px-2 py-1 rounded-md bg-gray-200 dark:bg-white/5 text-gray-700 dark:text-gray-400 text-[10px] border border-gray-300 dark:border-white/5">
                         {act}
                       </span>
                     ))}
@@ -122,26 +122,26 @@ export default function SiteCard({ destination, showFavorite = true }) {
                 </div>
 
                 {locationInfo && (
-                  <div className="space-y-4 bg-charcoal-950 rounded-xl p-4 border border-white/10">
+                  <div className="space-y-4 bg-gray-100 dark:bg-charcoal-950 rounded-xl p-4 border border-gray-300 dark:border-white/10">
                     <div className="flex items-start gap-3">
                       <Clock size={16} className="text-[#c5932a] mt-0.5" />
                       <div>
-                        <p className="text-white text-sm font-medium">Opening Hours</p>
-                        <p className="text-gray-400 text-xs">{locationInfo.openingHours}</p>
+                        <p className="text-gray-900 dark:text-white text-sm font-medium">Opening Hours</p>
+                        <p className="text-gray-700 dark:text-gray-400 text-xs">{locationInfo.openingHours}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <CreditCard size={16} className="text-[#c5932a] mt-0.5" />
                       <div>
-                        <p className="text-white text-sm font-medium">Rates & Entry Info</p>
-                        <p className="text-gray-400 text-xs">{locationInfo.rates}</p>
+                        <p className="text-gray-900 dark:text-white text-sm font-medium">Rates & Entry Info</p>
+                        <p className="text-gray-700 dark:text-gray-400 text-xs">{locationInfo.rates}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <MapPin size={16} className="text-[#c5932a] mt-0.5" />
                       <div>
-                        <p className="text-white text-sm font-medium">GPS Coordinates</p>
-                        <p className="text-gray-400 text-xs font-mono">{locationInfo.gpsCoordinates}</p>
+                        <p className="text-gray-900 dark:text-white text-sm font-medium">GPS Coordinates</p>
+                        <p className="text-gray-700 dark:text-gray-400 text-xs font-mono">{locationInfo.gpsCoordinates}</p>
                       </div>
                     </div>
                   </div>
@@ -154,7 +154,7 @@ export default function SiteCard({ destination, showFavorite = true }) {
                     href={locationInfo.mapLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#c5932a] hover:bg-[#d4a528] text-[#071510] text-sm font-bold transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#c5932a] hover:bg-[#d4a528] text-white text-sm font-bold transition-colors"
                   >
                     <ExternalLink size={16} /> Open in Maps
                   </a>

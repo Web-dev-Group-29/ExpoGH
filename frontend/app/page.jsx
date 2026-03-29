@@ -77,7 +77,7 @@ const whyCards = [
 
 export default function HomePage() {
   return (
-    <div className="bg-charcoal-950 min-h-screen">
+    <div className="bg-white dark:bg-charcoal-950 min-h-screen transition-colors duration-300">
       {/* ── HERO & REGIONS WITH SHARED BACKGROUND ── */}
       <section className="relative pt-24 pb-16 overflow-hidden">
         {/* Shared Background Image */}
@@ -125,11 +125,11 @@ export default function HomePage() {
           </div>
 
           {/* Right — Card */}
-          <div className="bg-black/30 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl">
-            <h2 className="text-xl md:text-xl font-bold text-white mb-4 text-center">
+          <div className="bg-gray-100/30 dark:bg-black/30 backdrop-blur-md rounded-2xl p-8 border border-gray-300 dark:border-white/10 shadow-2xl">
+            <h2 className="text-xl md:text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">
               Explore Ghana by Region
             </h2>
-            <p className="text-gray-300 text-sm leading-relaxed text-left">
+            <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed text-left">
               Ghana is a nation of diverse landscapes and living traditions, from the urban energy of Greater Accra and royal Ashanti heritage to Central&apos;s historic coastline and Western&apos;s rainforest beauty. Eastern offers mountains and waterfalls, Volta showcases highlands, Northern stretches into savannah and wildlife, while Upper East, Upper West, Bono, Bono East, Ahafo, Oti, Western North, Savannah, and North East reflect culture, rivers, forests, plains, and strong community traditions.
             </p>
           </div>
@@ -141,14 +141,14 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto space-y-4 text-center lg:text-left flex flex-col items-center">
           {/* Category */}
           <div className="flex flex-wrap items-center justify-center gap-2">
-            <span className="text-gray-400 text-xs font-bold uppercase tracking-widest mr-2">
+            <span className="text-gray-600 dark:text-gray-400 text-xs font-bold uppercase tracking-widest mr-2">
               CATEGORY
             </span>
             {CATEGORIES.map((cat) => (
               <Link
                 key={cat}
                 href={`/regions?category=${cat}`}
-                className="px-4 py-1.5 rounded-full text-xs font-semibold bg-charcoal-900 text-gray-300 hover:bg-[#c5932a] hover:text-charcoal-950 transition-colors"
+                className="px-4 py-1.5 rounded-full text-xs font-semibold bg-white/60 dark:bg-charcoal-900 border border-gray-300/40 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-[#c5932a] hover:text-white hover:border-[#c5932a] dark:hover:border-[#c5932a] transition-all shadow-sm hover:shadow-md"
               >
                 {cat}
               </Link>
@@ -156,14 +156,14 @@ export default function HomePage() {
           </div>
           {/* Region */}
           <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
-            <span className="text-gray-400 text-xs font-bold uppercase tracking-widest mr-2">
+            <span className="text-gray-600 dark:text-gray-400 text-xs font-bold uppercase tracking-widest mr-2">
               REGION
             </span>
             {REGIONS_LIST.map((r) => (
               <Link
                 key={r}
                 href={`/regions?region=${encodeURIComponent(r)}`}
-                className="px-4 py-1.5 rounded-full text-xs font-semibold bg-charcoal-900 text-gray-300 hover:bg-[#c5932a] hover:text-charcoal-950 transition-colors"
+                className="px-4 py-1.5 rounded-full text-xs font-semibold bg-white/60 dark:bg-charcoal-900 border border-gray-300/40 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-[#c5932a] hover:text-white hover:border-[#c5932a] dark:hover:border-[#c5932a] transition-all shadow-sm hover:shadow-md"
               >
                 {r}
               </Link>
@@ -177,7 +177,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
 
           <div className="text-center relative">
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-8">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-8">
               The Boti Water falls
             </h2>
 
@@ -196,8 +196,8 @@ export default function HomePage() {
 
       {/* ABOUT BOTI FALLS */}
       <section className="px-4 text-center z-20 relative mb-4">
-        <h3 className="text-lg md:text-xl font-bold text-white mb-3">About Boti Falls</h3>
-        <p className="text-gray-300/90 text-sm md:text-base leading-relaxed max-w-3xl mx-auto font-medium">
+        <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3">About Boti Falls</h3>
+        <p className="text-gray-700 dark:text-gray-300/90 text-sm md:text-base leading-relaxed max-w-3xl mx-auto font-medium">
           Boti Falls is a beautiful twin waterfall in Ghana&apos;s Eastern Region, surrounded by lush
           forest and scenic rocks. It offers a refreshing natural escape and stunning views,
           especially during the rainy season when the falls flow strongly.
@@ -214,7 +214,7 @@ export default function HomePage() {
       {/* ── TRAVEL TIPS ── */}
       <section className="py-8 px-4 overflow-hidden">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-12 relative z-20">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white text-center mb-12 relative z-20">
             Travel Tips for Visitors to Ghana
           </h2>
 
@@ -226,7 +226,7 @@ export default function HomePage() {
                   i % 2 !== 0
                     ? 'md:flex-row-reverse self-end md:translate-x-4'
                     : 'self-start md:-translate-x-4'
-                } w-full md:w-[70%] rounded-2xl overflow-hidden bg-charcoal-900 border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform hover:scale-[1.02] duration-300 relative`}
+                } w-full md:w-[70%] rounded-2xl overflow-hidden bg-gray-100 dark:bg-charcoal-900 border border-gray-300 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform hover:scale-[1.02] duration-300 relative`}
               >
                 {/* Image half */}
                 <div className="relative w-full md:w-[45%] h-64 shrink-0">
@@ -241,8 +241,8 @@ export default function HomePage() {
 
                 {/* Text half */}
                 <div className="w-full md:w-[55%] flex flex-col justify-center text-center md:text-left px-8 py-8 md:px-10">
-                  <h3 className="text-white font-bold text-lg md:text-xl mb-3">{tip.title}</h3>
-                  <p className="text-gray-400 text-[13px] leading-relaxed font-medium">{tip.body}</p>
+                  <h3 className="text-gray-900 dark:text-white font-bold text-lg md:text-xl mb-3">{tip.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-400 text-[13px] leading-relaxed font-medium">{tip.body}</p>
                 </div>
               </div>
             ))}
@@ -253,7 +253,7 @@ export default function HomePage() {
       {/* ── WHY EXPO GH ── */}
       <section className="py-16 px-4 pb-24">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white text-center mb-10">
             Why ExpoGH
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -269,10 +269,10 @@ export default function HomePage() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-colors" />
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
                   <h3 className="text-white font-bold text-lg mb-3">{card.title}</h3>
-                  <p className="text-gray-300 text-xs md:text-sm leading-relaxed">{card.body}</p>
+                  <p className="text-white/90 text-xs md:text-sm leading-relaxed">{card.body}</p>
                 </div>
               </div>
             ))}

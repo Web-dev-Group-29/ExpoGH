@@ -91,15 +91,15 @@ export default function ExperiencesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-charcoal-950">
+    <div className="min-h-screen bg-white dark:bg-charcoal-950 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 py-10">
 
         {/* ── SUBMIT AREA ── */}
-        <div className="bg-charcoal-900 border border-white/10 rounded-xl p-5 mb-10">
+        <div className="bg-gray-100 dark:bg-charcoal-900 border border-gray-300 dark:border-white/10 rounded-xl p-5 mb-10">
           <select
             value={selectedSite}
             onChange={(e) => setSelectedSite(e.target.value)}
-            className="w-full bg-charcoal-950 border border-white/10 text-white text-sm rounded-lg px-3 py-2 mb-3 focus:outline-none focus:border-[#c5932a]/60"
+            className="w-full bg-white dark:bg-charcoal-950 border border-gray-300 dark:border-white/10 text-gray-900 dark:text-white text-sm rounded-lg px-3 py-2 mb-3 focus:outline-none focus:border-[#c5932a]/60"
           >
             {destinations.map((d) => (
               <option key={d.id} value={d.id}>{d.name}</option>
@@ -112,11 +112,11 @@ export default function ExperiencesPage() {
             placeholder="Please type in your experience here"
             rows={4}
             maxLength={500}
-            className="w-full bg-transparent text-gray-300 text-sm placeholder-gray-600 resize-none focus:outline-none"
+            className="w-full bg-transparent text-gray-900 dark:text-gray-300 text-sm placeholder-gray-600 dark:placeholder-gray-600 resize-none focus:outline-none"
           />
 
-          <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
-            <span className="text-gray-600 text-xs">{text.length}/500</span>
+          <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-300 dark:border-white/10">
+            <span className="text-gray-700 dark:text-gray-600 text-xs">{text.length}/500</span>
             <button
               onClick={handleAdd}
               disabled={!text.trim()}
@@ -133,7 +133,7 @@ export default function ExperiencesPage() {
             <article
               key={exp.id}
               onClick={() => setSelectedExp(exp)}
-              className="relative rounded-xl overflow-hidden border-2 border-dashed border-white/10 hover:border-[#c5932a]/40 transition-colors group cursor-pointer"
+              className="relative rounded-xl overflow-hidden border-2 border-dashed border-gray-300 dark:border-white/10 hover:border-[#c5932a]/40 transition-colors group cursor-pointer"
             >
               {/* Image */}
               <div className="relative h-44 overflow-hidden">
@@ -162,13 +162,13 @@ export default function ExperiencesPage() {
                 </p>
               </div>
               {/* Footer */}
-              <div className="px-3 py-2 bg-charcoal-900 border-t border-white/5">
-                <p className="text-white text-xs font-semibold line-clamp-1">{exp.siteName}</p>
+              <div className="px-3 py-2 bg-gray-100 dark:bg-charcoal-900 border-t border-gray-300 dark:border-white/5">
+                <p className="text-gray-900 dark:text-white text-xs font-semibold line-clamp-1">{exp.siteName}</p>
                 <div className="flex items-center justify-between mt-0.5">
-                  <p className="text-gray-500 text-[10px] flex items-center gap-1">
+                  <p className="text-gray-600 dark:text-gray-500 text-[10px] flex items-center gap-1">
                     <MapPin size={9} /> {exp.siteName}
                   </p>
-                  <p className="text-gray-600 text-[9px]">{exp.date}</p>
+                  <p className="text-gray-700 dark:text-gray-600 text-[9px]">{exp.date}</p>
                 </div>
               </div>
             </article>
@@ -182,7 +182,7 @@ export default function ExperiencesPage() {
               className="absolute inset-0 bg-black/80 backdrop-blur-sm"
               onClick={() => setSelectedExp(null)}
             />
-            <div className="relative w-full max-w-xl bg-charcoal-900 border border-white/10 rounded-2xl overflow-hidden shadow-2xl scale-100 transition-transform duration-300">
+            <div className="relative w-full max-w-xl bg-white dark:bg-charcoal-900 border border-gray-300 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl scale-100 transition-transform duration-300">
               <button
                 onClick={() => setSelectedExp(null)}
                 className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
@@ -197,21 +197,21 @@ export default function ExperiencesPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 dark:from-charcoal-900 via-transparent to-transparent" />
               </div>
 
               <div className="p-8 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold text-white">{selectedExp.siteName}</h3>
-                  <div className="text-right text-xs text-gray-400">
-                    <p className="font-semibold text-gold-500">{selectedExp.author}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{selectedExp.siteName}</h3>
+                  <div className="text-right text-xs text-gray-600 dark:text-gray-400">
+                    <p className="font-semibold text-[#c5932a]">{selectedExp.author}</p>
                     <p>{selectedExp.date}</p>
                   </div>
                 </div>
 
-                <div className="h-0.5 w-12 bg-gold-600/60 rounded-full" />
+                <div className="h-0.5 w-12 bg-[#c5932a]/60 rounded-full" />
 
-                <p className="text-gray-200 text-lg leading-relaxed font-medium">
+                <p className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed font-medium">
                   "{selectedExp.text}"
                 </p>
 

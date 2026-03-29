@@ -33,7 +33,7 @@ const travelTips = [
 
 export default function TravelTipsPage() {
   return (
-    <div className="min-h-screen bg-charcoal-950 pt-20 pb-20">
+    <div className="min-h-screen bg-white dark:bg-charcoal-950 transition-colors duration-300 pt-20 pb-20">
       <div className="max-w-6xl mx-auto px-4">
 
         {/* Hero Section */}
@@ -44,10 +44,10 @@ export default function TravelTipsPage() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-charcoal-950/90 via-charcoal-950/40 to-transparent flex items-center">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 dark:from-charcoal-950/90 via-black/40 dark:via-charcoal-950/40 to-transparent flex items-center">
             <div className="pl-8 md:pl-16 max-w-xl">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Travel Tips</h1>
-              <p className="text-gray-200 text-lg">
+              <p className="text-white/90 text-lg">
                 Everything you need to know for a smooth and memorable journey through the heart of West Africa.
               </p>
             </div>
@@ -57,16 +57,16 @@ export default function TravelTipsPage() {
         {/* Tips Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {travelTips.map((tip, idx) => (
-            <div key={idx} className="bg-charcoal-900 border border-white/10 rounded-2xl overflow-hidden flex flex-col sm:flex-row">
+            <div key={idx} className="bg-gray-100 dark:bg-charcoal-900 border border-gray-300 dark:border-white/10 rounded-2xl overflow-hidden flex flex-col sm:flex-row">
               <div className="relative w-full sm:w-48 h-48 sm:h-auto shrink-0">
                 <Image src={tip.image} alt={tip.title} fill className="object-cover" />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-charcoal-950 rounded-lg">{tip.icon}</div>
-                  <h3 className="text-xl font-bold text-white">{tip.title}</h3>
+                  <div className="p-2 bg-white dark:bg-charcoal-950 rounded-lg">{tip.icon}</div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{tip.title}</h3>
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-400 text-sm leading-relaxed">
                   {tip.description}
                 </p>
               </div>
@@ -75,10 +75,10 @@ export default function TravelTipsPage() {
         </div>
 
         {/* Getting Around Section */}
-        <section className="bg-charcoal-900 rounded-3xl p-8 md:p-12 border border-white/10">
+        <section className="bg-gray-100 dark:bg-charcoal-900 rounded-3xl p-8 md:p-12 border border-gray-300 dark:border-white/10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-6">Getting Around</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Getting Around</h2>
               <div className="space-y-4">
                 {[
                   "Tro-tros: The local, affordable way to travel between cities.",
@@ -86,7 +86,7 @@ export default function TravelTipsPage() {
                   "Domestic Flights: Africa World Airlines and PassionAir connect major cities.",
                   "Private Rental: For comfort, consider renting a car with a driver."
                 ].map((text, i) => (
-                  <div key={i} className="flex gap-3 text-gray-300">
+                  <div key={i} className="flex gap-3 text-gray-800 dark:text-gray-300">
                     <CheckCircle2 className="text-[#c5932a] shrink-0 mt-1" size={18} />
                     <p>{text}</p>
                   </div>
@@ -99,7 +99,7 @@ export default function TravelTipsPage() {
                 <Navigation size={18} /> Start Exploring
               </Link>
             </div>
-            <div className="relative h-[300px] rounded-2xl overflow-hidden border border-white/5">
+            <div className="relative h-[300px] rounded-2xl overflow-hidden border border-gray-300 dark:border-white/5">
               <Image src="/assets/photo5.jpg" alt="Transportation in Ghana" fill className="object-cover" />
             </div>
           </div>

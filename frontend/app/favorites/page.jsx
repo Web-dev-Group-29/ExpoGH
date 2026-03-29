@@ -71,11 +71,11 @@ export default function FavoritesPage() {
   const verticalOffsets = [0, -12, 8, -6, 14, -10, 4, -8]
 
   return (
-    <div className="min-h-screen bg-charcoal-950">
+    <div className="min-h-screen bg-white dark:bg-charcoal-950 transition-colors duration-300">
 
       {/* ── TREE HERO with floating thumbnails ── */}
       <section
-        className="relative overflow-hidden"
+        className="relative overflow-hidden bg-white dark:bg-charcoal-950"
         style={{ height: '90vh', minHeight: '600px' }}
       >
         <Image
@@ -85,7 +85,7 @@ export default function FavoritesPage() {
           priority
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 dark:from-charcoal-950 dark:via-charcoal-950/50 to-transparent" />
 
         {/* Floating thumbnails at the base / roots of the tree */}
         <div className="absolute bottom-10 left-0 right-0 px-4">
@@ -115,11 +115,11 @@ export default function FavoritesPage() {
       </section>
 
       {/* ── SAVED FAVORITES ── */}
-      <section className="px-4 py-14 bg-charcoal-950">
+      <section className="px-4 py-14 bg-white dark:bg-charcoal-950">
         <div className="max-w-6xl mx-auto">
           {mounted && favDestinations.length > 0 ? (
             <>
-              <h2 className="text-2xl font-bold text-white mb-8 text-center">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
                 Your Saved Destinations
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -130,10 +130,10 @@ export default function FavoritesPage() {
             </>
           ) : mounted ? (
             <div className="text-center py-16">
-              <h2 className="text-white font-semibold text-xl mb-3">
+              <h2 className="text-gray-900 dark:text-white font-semibold text-xl mb-3">
                 No saved destinations yet
               </h2>
-              <p className="text-gray-500 mb-8 max-w-sm mx-auto text-sm">
+              <p className="text-gray-700 dark:text-gray-500 mb-8 max-w-sm mx-auto text-sm">
                 Tap the ♡ on any destination to save it here for quick access.
               </p>
               <Link

@@ -53,7 +53,7 @@ export default async function DestinationPage({ params }) {
   ].slice(0, 12)
 
   return (
-    <div className="min-h-screen bg-forest-950">
+    <div className="min-h-screen bg-white dark:bg-forest-950 transition-colors duration-300">
 
       {/* JSON-LD */}
       <script

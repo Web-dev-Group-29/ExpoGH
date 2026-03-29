@@ -28,9 +28,9 @@ export default function RegionsPage() {
   }, [query, activeCategory, activeRegion])
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden">
-      {/* Background Image */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+    <div className="min-h-screen relative overflow-x-hidden bg-white dark:bg-charcoal-950 transition-colors duration-300">
+      {/* Background Image - Dark mode only */}
+      <div className="fixed inset-0 z-0 pointer-events-none dark:block hidden">
         <Image
           src="/assets/Rectangle 22.png"
           alt="Page background"
@@ -46,13 +46,13 @@ export default function RegionsPage() {
         <section className="bg-transparent px-4 py-8">
           <div className="max-w-6xl mx-auto">
             <div className="relative max-w-2xl mx-auto">
-              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-400" />
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search regions, destinations..."
-                className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/5 backdrop-blur-md border-none text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-[#c5932a]/40 text-sm transition-all shadow-2xl"
+                className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-300/50 dark:border-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-[#c5932a]/40 text-sm transition-all shadow-2xl"
               />
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function RegionsPage() {
                           className={`text-left text-sm w-full py-1 transition-colors ${
                             activeCategory === cat
                               ? 'text-[#c5932a] font-bold text-base'
-                              : 'text-gray-400 hover:text-white'
+                              : 'text-gray-600 dark:text-gray-400 hover:text-[#c5932a] dark:hover:text-white'
                           }`}
                         >
                           {cat}
@@ -135,7 +135,7 @@ export default function RegionsPage() {
                           className={`text-left text-sm w-full py-1 transition-colors ${
                             activeRegion === r
                               ? 'text-[#c5932a] font-bold text-base'
-                              : 'text-gray-400 hover:text-white'
+                              : 'text-gray-600 dark:text-gray-400 hover:text-[#c5932a] dark:hover:text-white'
                           }`}
                         >
                           {r}
@@ -171,7 +171,7 @@ export default function RegionsPage() {
 
               {/* CENTER COLLUMN - Reverted size but kept box/arrow removals */}
               <div className="md:col-span-6 relative text-center">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
                   Ashanti Region
                 </h2>
 
@@ -203,7 +203,7 @@ export default function RegionsPage() {
               </div>
             </div>
 
-            <p className="text-gray-400 text-sm leading-relaxed max-w-3xl mx-auto text-center">
+            <p className="text-gray-700 dark:text-gray-400 text-sm leading-relaxed max-w-3xl mx-auto text-center">
               The Ashanti Region is a major cultural center in Ghana and the historic home of the
               Ashanti Kingdom. Its capital, Kumasi, is known for its rich traditions, royal heritage,
               and vibrant cultural life. Visitors can explore the Manhyia Palace Museum, the
@@ -220,8 +220,8 @@ export default function RegionsPage() {
         <section className="px-4 py-12 bg-transparent">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between mb-6">
-              <p className="text-gray-400 text-sm">
-                <span className="text-white font-medium">{filtered.length}</span> destination{filtered.length !== 1 ? 's' : ''}
+              <p className="text-gray-700 dark:text-gray-400 text-sm">
+                <span className="text-gray-900 dark:text-white font-medium">{filtered.length}</span> destination{filtered.length !== 1 ? 's' : ''}
               </p>
               {(activeCategory !== 'All' || activeRegion !== 'All Regions' || query) && (
                 <button
@@ -241,8 +241,8 @@ export default function RegionsPage() {
               </div>
             ) : (
               <div className="text-center py-24">
-                <p className="text-gray-500 text-lg mb-2">No destinations found</p>
-                <p className="text-gray-600 text-sm">Try adjusting your search or filters</p>
+                <p className="text-gray-600 dark:text-gray-500 text-lg mb-2">No destinations found</p>
+                <p className="text-gray-700 dark:text-gray-600 text-sm">Try adjusting your search or filters</p>
               </div>
             )}
           </div>

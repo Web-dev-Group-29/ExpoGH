@@ -9,14 +9,14 @@ export default function Footer() {
   if (pathname === '/regions') return null
 
   return (
-    <footer className="relative pt-20 pb-8 transition-colors">
+    <footer className="relative pt-20 pb-8 transition-colors bg-gray-50 dark:bg-charcoal-900">
       {/* Top Gradient Blend */}
-      <div className="absolute top-0 left-0 right-0 h-24 -translate-y-[99%] pointer-events-none bg-gradient-to-t from-charcoal-900 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-24 -translate-y-[99%] pointer-events-none bg-gradient-to-t from-gray-100 dark:from-charcoal-900 to-transparent" />
 
-      <div className="absolute inset-0 z-[-1] bg-charcoal-900" />
+      <div className="absolute inset-0 z-[-1] bg-gray-50 dark:bg-charcoal-900" />
       {/* ExpoGH logo centred with lines */}
       <div className="flex items-center justify-center gap-4 mb-10 px-4">
-        <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#c5932a]/40" />
+        <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#c5932a]/40 dark:to-[#c5932a]/40" />
         <Link href="/" className="relative w-28 h-8">
           <Image
             src="/assets/expo-logo-1.png"
@@ -25,15 +25,15 @@ export default function Footer() {
             className="object-contain"
           />
         </Link>
-        <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-transparent to-[#c5932a]/40" />
+        <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-transparent to-[#c5932a]/40 dark:to-[#c5932a]/40" />
       </div>
 
       {/* Columns */}
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
         {/* EXPLORE */}
         <div>
-          <h3 className="text-white font-bold text-xs uppercase tracking-widest mb-4">Explore</h3>
-          <ul className="space-y-2 text-sm text-gray-500">
+          <h3 className="text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-4">Explore</h3>
+          <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-500">
             {[
               { label: 'Home', href: '/' },
               { label: 'Regions', href: '/regions' },
@@ -42,7 +42,7 @@ export default function Footer() {
               { label: 'Favorites', href: '/favorites' },
             ].map((item) => (
               <li key={item.label}>
-                <Link href={item.href} className="hover:text-[#c5932a] transition-colors">
+                <Link href={item.href} className="hover:text-[#c5932a] dark:hover:text-[#c5932a] transition-colors">
                   {item.label}
                 </Link>
               </li>
@@ -52,8 +52,8 @@ export default function Footer() {
 
         {/* CONTACT US */}
         <div>
-          <h3 className="text-white font-bold text-xs uppercase tracking-widest mb-4">Contact Us</h3>
-          <ul className="space-y-2 text-sm text-gray-500">
+          <h3 className="text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-4">Contact Us</h3>
+          <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-500">
             <li>Email: expogh@gmail.com</li>
             <li>Location: Kumasi, Ghana</li>
             <li>Phone: +233 5412345678</li>
@@ -63,8 +63,8 @@ export default function Footer() {
 
         {/* TOP DESTINATIONS */}
         <div>
-          <h3 className="text-white font-bold text-xs uppercase tracking-widest mb-4">Top Destinations</h3>
-          <ul className="space-y-2 text-sm text-gray-500">
+          <h3 className="text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-4">Top Destinations</h3>
+          <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-500">
             {[
               { label: 'Kakum National Park', id: 'kakum-national-park' },
               { label: 'Cape Coast Castle', id: 'cape-coast-castle' },
@@ -74,7 +74,7 @@ export default function Footer() {
               { label: 'Labadi Beach', id: 'labadi-beach' },
             ].map((d) => (
               <li key={d.id}>
-                <Link href={`/destinations/${d.id}`} className="hover:text-[#c5932a] transition-colors">
+                <Link href={`/destinations/${d.id}`} className="hover:text-[#c5932a] dark:hover:text-[#c5932a] transition-colors">
                   {d.label}
                 </Link>
               </li>
@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className="text-center text-xs text-gray-700">
+      <p className="text-center text-xs text-gray-600 dark:text-gray-700">
         © {new Date().getFullYear()} ExpoGH — Discover Ghana&apos;s Culture, Nature &amp; History
       </p>
     </footer>

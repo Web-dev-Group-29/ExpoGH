@@ -7,6 +7,7 @@
     scroll-behavior: smooth;
   }
 
+  /* Dark Mode (Default) */
   body {
     @apply bg-charcoal-950 text-white;
   }
@@ -29,6 +30,31 @@
 
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-gold-600/60;
+  }
+
+  /* Light Mode */
+  html.light-mode {
+    color-scheme: light;
+  }
+
+  html.light-mode body {
+    @apply bg-white text-gray-900;
+  }
+
+  html.light-mode ::selection {
+    @apply bg-[#c5932a]/20 text-gray-900;
+  }
+
+  html.light-mode ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  html.light-mode ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+
+  html.light-mode ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#c5932a]/60;
   }
 }
 
