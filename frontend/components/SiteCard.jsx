@@ -88,8 +88,8 @@ export default function SiteCard({ destination, showFavorite = true }) {
                   <h3 className="text-gray-900 dark:text-white text-sm font-semibold mb-2 flex items-center gap-2">
                     <Sparkles size={14} className="text-[#c5932a]" /> Overview
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-                    {destination.description}
+                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed max-h-20 md:max-h-none overflow-hidden">
+                    {destination.shortDescription}
                   </p>
                 </div>
 

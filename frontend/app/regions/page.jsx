@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Search } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 import { destinations, CATEGORIES } from '@/lib/data'
 import SiteCard from '@/components/SiteCard'
 
@@ -16,6 +16,7 @@ export default function RegionsPage() {
   const [query, setQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
   const [activeRegion, setActiveRegion] = useState('All Regions')
+  const [showAburiModal, setShowAburiModal] = useState(false)
 
   const filtered = useMemo(() => {
     return destinations.filter((d) => {
@@ -260,24 +261,30 @@ export default function RegionsPage() {
                     Aburi Botanical Gardens
                   </h2>
                   <div className="space-y-6 text-gray-200 text-sm md:text-base leading-relaxed font-medium">
-                    <p>
+                    <p className="line-clamp-4 md:line-clamp-none">
                       Located in the hills of the Eastern Region near the town of Aburi, the Aburi Botanical Gardens
                       is one of Ghana&apos;s most peaceful and scenic natural attractions. Established during the colonial
                       period in 1890, the gardens cover a large area filled with tropical plants, towering trees,
                       and beautifully maintained lawns.
                     </p>
-                    <p>
+                    <p className="hidden md:block">
                       Visitors come to the gardens to enjoy the cool mountain climate, walk through shaded paths,
                       and relax in the calm natural environment overlooking parts of the Eastern Region. The gardens
                       feature several plant species used for medicinal, ornamental, and research purposes, making
                       it both a recreational and educational destination.
                     </p>
-                    <p>
+                    <p className="hidden md:block">
                       Because of its serene atmosphere and beautiful landscape, Aburi Botanical Gardens is also
                       a popular location for picnics, photography, nature walks, and small events. It offers
                       visitors a refreshing escape from the busy city life of nearby Accra while showcasing the
                       beauty of Ghana&apos;s plant life and natural environment.
                     </p>
+                    <button 
+                      onClick={() => setShowAburiModal(true)}
+                      className="md:hidden text-[#c5932a] hover:text-[#d4a528] font-bold text-left focus:outline-none"
+                    >
+                      Read full description
+                    </button>
                   </div>
                 </div>
               </div>
@@ -394,6 +401,47 @@ export default function RegionsPage() {
 
           </div>
         </section>
+
+        {/* ── ABURI BOTANICAL GARDENS MODAL (MOBILE ONLY) ── */}
+        {showAburiModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 md:hidden">
+            <div 
+              className="absolute inset-0"
+              onClick={() => setShowAburiModal(false)}
+            />
+            <div className="bg-[#4a5240] border border-[#c5932a]/40 rounded-3xl w-full max-w-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-in fade-in zoom-in duration-200 relative z-10 max-h-[85vh] flex flex-col">
+              <div className="flex justify-between items-center p-5 border-b border-white/10 shrink-0">
+                <h3 className="text-lg font-bold text-white">Aburi Botanical Gardens</h3>
+                <button
+                  onClick={() => setShowAburiModal(false)}
+                  className="p-1.5 bg-black/20 hover:bg-black/40 rounded-full text-white transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="p-6 overflow-y-auto custom-scrollbar space-y-4 text-gray-200 text-sm leading-relaxed font-medium">
+                <p>
+                  Located in the hills of the Eastern Region near the town of Aburi, the Aburi Botanical Gardens
+                  is one of Ghana&apos;s most peaceful and scenic natural attractions. Established during the colonial
+                  period in 1890, the gardens cover a large area filled with tropical plants, towering trees,
+                  and beautifully maintained lawns.
+                </p>
+                <p>
+                  Visitors come to the gardens to enjoy the cool mountain climate, walk through shaded paths,
+                  and relax in the calm natural environment overlooking parts of the Eastern Region. The gardens
+                  feature several plant species used for medicinal, ornamental, and research purposes, making
+                  it both a recreational and educational destination.
+                </p>
+                <p>
+                  Because of its serene atmosphere and beautiful landscape, Aburi Botanical Gardens is also
+                  a popular location for picnics, photography, nature walks, and small events. It offers
+                  visitors a refreshing escape from the busy city life of nearby Accra while showcasing the
+                  beauty of Ghana&apos;s plant life and natural environment.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
     </div>

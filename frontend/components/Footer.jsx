@@ -9,7 +9,7 @@ export default function Footer() {
   if (pathname === '/regions') return null
 
   return (
-    <footer className="relative pt-20 pb-8 transition-colors bg-gray-50 dark:bg-charcoal-900">
+    <footer className="relative pt-1 sm:pt-20 pb-8 transition-colors bg-gray-50 dark:bg-charcoal-900">
       {/* Top Gradient Blend */}
       <div className="absolute top-0 left-0 right-0 h-24 -translate-y-[99%] pointer-events-none bg-gradient-to-t from-gray-100 dark:from-charcoal-900 to-transparent" />
 
@@ -29,42 +29,66 @@ export default function Footer() {
       </div>
 
       {/* Columns */}
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
-        {/* EXPLORE */}
-        <div>
-          <h3 className="text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-4">Explore</h3>
-          <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-500">
-            {[
-              { label: 'Home', href: '/' },
-              { label: 'Regions', href: '/regions' },
-              { label: 'Experiences', href: '/experiences' },
-              { label: 'Travel Tips', href: '/travel-tips' },
-              { label: 'Favorites', href: '/favorites' },
-            ].map((item) => (
-              <li key={item.label}>
-                <Link href={item.href} className="hover:text-[#c5932a] dark:hover:text-[#c5932a] transition-colors">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+      <div className="max-w-6xl mx-auto px-4 mb-8">
+        {/* Top row: Explore & Contact Us side by side on mobile */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 mb-8">
+          {/* EXPLORE */}
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-4">Explore</h3>
+            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-500">
+              {[
+                { label: 'Home', href: '/' },
+                { label: 'Regions', href: '/regions' },
+                { label: 'Experiences', href: '/experiences' },
+                { label: 'Travel Tips', href: '/travel-tips' },
+                { label: 'Favorites', href: '/favorites' },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="hover:text-[#c5932a] dark:hover:text-[#c5932a] transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* CONTACT US */}
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-4">Contact Us</h3>
+            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-500">
+              <li>Email: expogh@gmail.com</li>
+              <li>Location: Kumasi, Ghana</li>
+              <li>Phone: +233 5412345678</li>
+              <li>WhatsApp: 05412345678</li>
+            </ul>
+          </div>
+
+          {/* Hidden on mobile, visible on sm and up */}
+          <div className="hidden sm:block">
+            <h3 className="text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-4">Top Destinations</h3>
+            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-500">
+              {[
+                { label: 'Kakum National Park', id: 'kakum-national-park' },
+                { label: 'Cape Coast Castle', id: 'cape-coast-castle' },
+                { label: 'Mole National Park', id: 'mole-national-park' },
+                { label: 'Wli Waterfalls', id: 'asenema-falls' },
+                { label: 'Boti Falls', id: 'boti-falls' },
+                { label: 'Labadi Beach', id: 'labadi-beach' },
+              ].map((d) => (
+                <li key={d.id}>
+                  <Link href={`/destinations/${d.id}`} className="hover:text-[#c5932a] dark:hover:text-[#c5932a] transition-colors">
+                    {d.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* CONTACT US */}
-        <div>
-          <h3 className="text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-4">Contact Us</h3>
-          <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-500">
-            <li>Email: expogh@gmail.com</li>
-            <li>Location: Kumasi, Ghana</li>
-            <li>Phone: +233 5412345678</li>
-            <li>WhatsApp: 05412345678</li>
-          </ul>
-        </div>
-
-        {/* TOP DESTINATIONS */}
-        <div>
+        {/* TOP DESTINATIONS - 3x2 grid on mobile, list on sm and up */}
+        <div className="sm:hidden mb-8">
           <h3 className="text-gray-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-4">Top Destinations</h3>
-          <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-500">
+          <div className="grid grid-cols-3 gap-4">
             {[
               { label: 'Kakum National Park', id: 'kakum-national-park' },
               { label: 'Cape Coast Castle', id: 'cape-coast-castle' },
@@ -73,13 +97,13 @@ export default function Footer() {
               { label: 'Boti Falls', id: 'boti-falls' },
               { label: 'Labadi Beach', id: 'labadi-beach' },
             ].map((d) => (
-              <li key={d.id}>
-                <Link href={`/destinations/${d.id}`} className="hover:text-[#c5932a] dark:hover:text-[#c5932a] transition-colors">
+              <div key={d.id}>
+                <Link href={`/destinations/${d.id}`} className="text-sm text-gray-600 dark:text-gray-500 hover:text-[#c5932a] dark:hover:text-[#c5932a] transition-colors line-clamp-2">
                   {d.label}
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
 
