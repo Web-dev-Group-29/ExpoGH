@@ -14,10 +14,11 @@ Expo GH is a dynamic and responsive web application designed to showcase the ric
 
 The application is built using modern web development standards to ensure high performance and maintainability:
 
-- **Framework:** [Next.js (v15)](https://nextjs.org/) (React Server Components / App Router)
+- **Build Tool:** [Vite](https://vitejs.dev/)
 - **UI Library:** [React (v18)](https://react.dev/)
+- **Routing:** [React Router (v6)](https://reactrouter.com/)
 - **Icons:** [Lucide React](https://lucide.dev/)
-- **Deployment & Edge Optimization:** Cloudflare Pages adapter (`@cloudflare/next-on-pages`)
+- **Styling:** Vanilla CSS (Custom Properties / Design Tokens)
 
 ## Getting Started
 
@@ -44,7 +45,7 @@ To run the local development server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can edit the code inside `app/page.jsx` or `app/regions/page.jsx`, and the browser will auto-update!
+Open the local URL shown in your terminal (usually [http://localhost:5173](http://localhost:5173)) to see the result.
 
 ### Building for Production
 
@@ -54,11 +55,11 @@ To create an optimized production build:
 npm run build
 ```
 
-The application is structurally pre-rendered locally through static site generation (SSG) protocols handled by Next.js.
-
 ## Project Structure
 
-- `frontend/app/` - The core application pages including routing logic for Regions and Experiences.
-- `frontend/app/globals.css` - Centralized styling architecture (light/dark themes, components).
-- `frontend/components/` - Highly reusable user-interface parts (like `SiteCard.jsx` and `FavoriteButton.jsx`).
-- `frontend/lib/` - Local datastores housing Ghana's tourist information (`data.js` and `locationsdb.json`).
+- `frontend/src/` - The core application source code.
+- `frontend/src/pages/` - Page components (Home, Regions, Experiences, etc.).
+- `frontend/src/components/` - Reusable UI components (SiteCard, Navbar, etc.).
+- `frontend/src/lib/` - Data utilities and mock databases.
+- `frontend/src/index.css` - Centralized design system and character styles.
+- `frontend/public/assets/` - Static assets (images, logos).
