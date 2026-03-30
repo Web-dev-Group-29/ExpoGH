@@ -523,41 +523,141 @@ html:not(.light-mode) .home-wrapper { background-color: var(--charcoal-950); }
 
 /* Hero */
 .home-hero {
-  position: relative; padding-top: 6rem; padding-bottom: 4rem; overflow: hidden;
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-.home-hero-bg { position: absolute; inset: 0; z-index: 0; }
+
+@media (min-width: 768px) {
+  .home-hero {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.home-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.home-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  animation: heroZoom 20s infinite alternate ease-in-out;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
 .home-hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.2), #fff);
+  position: absolute;
+  inset: 0;
+  /* Multi-layered gradient for better depth and text contrast */
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 15, 24, 0.3) 0%,
+    rgba(10, 15, 24, 0.1) 40%,
+    rgba(10, 15, 24, 0.6) 70%,
+    var(--charcoal-950) 100%
+  );
 }
-html:not(.light-mode) .home-hero-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(16,23,38,0.8), var(--charcoal-950));
+
+html.light-mode .home-hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.7) 80%,
+    #ffffff 100%
+  );
 }
 .home-hero-content {
-  position: relative; z-index: 10; text-align: center;
-  padding: 4rem 1rem 5rem;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 6rem 1rem 8rem;
+  min-height: 50vh; /* Ensure hero image is prominent on mobile */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .home-hero-content {
+    padding: 8rem 1rem 12rem;
+    min-height: auto;
+  }
 }
 .home-hero-title {
-  font-size: 2.25rem; font-weight: 700; color: #fff; margin-bottom: 1rem;
+  font-size: 2.75rem; /* Larger on mobile for more impact */
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Added depth */
+  letter-spacing: -0.02em;
 }
-@media (min-width: 768px) { .home-hero-title { font-size: 3.75rem; } }
-@media (min-width: 1024px) { .home-hero-title { font-size: 4.5rem; } }
+
+@media (min-width: 768px) {
+  .home-hero-title { font-size: 4rem; }
+}
+
+@media (min-width: 1024px) {
+  .home-hero-title { font-size: 5rem; }
+}
+
 .home-hero-sub {
-  font-size: 0.875rem; color: #e5e7eb; margin-bottom: 2rem; font-weight: 500;
+  font-size: 1rem;
+  color: #f3f4f6;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
-@media (min-width: 768px) { .home-hero-sub { font-size: 1.125rem; } }
+
+@media (min-width: 768px) {
+  .home-hero-sub { font-size: 1.25rem; max-width: none; }
+}
 .home-hero-actions {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
 }
 .home-hero-btn {
-  padding: 0.625rem 1.5rem; border-radius: 9999px; font-size: 0.875rem;
-  font-weight: 600; text-decoration: none; transition: all 200ms;
-  backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-  background-color: rgba(27,38,57,0.8); color: #fff;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
+
 .home-hero-btn:hover {
-  background-color: var(--accent); color: var(--charcoal-950);
+  background-color: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 147, 42, 0.4);
+}
+
+.home-hero-btn:active {
+  transform: translateY(0);
 }
 
 /* Regions Section */
