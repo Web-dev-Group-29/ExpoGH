@@ -1,8 +1,7 @@
 
-import { useState, useMemo } from 'react'
-
+import { useState, useMemo, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { Search, X } from 'lucide-react'
+import { Search, X, Hand } from 'lucide-react'
 import { CATEGORIES } from '@/lib/data'
 import { useData } from '@/context/DataContext'
 import SiteCard from '@/components/SiteCard'
@@ -12,12 +11,50 @@ const REGIONS_LIST = [
   'Central','Northern','Upper East','Upper West','Volta','Bono',
 ]
 
+const FEATURED_IDS = [
+  'boti-falls',
+  'kakum-national-park',
+  'aburi-botanical-gardens',
+  'cape-coast-castle',
+  'lake-volta',
+  'asenema-falls',
+]
+
+function GoldCorners() {
+  return (
+    <div className="gold-corners-wrap">
+      <div className="gold-corner gold-corner-tl" />
+      <div className="gold-corner gold-corner-tr" />
+      <div className="gold-corner gold-corner-bl" />
+      <div className="gold-corner gold-corner-br" />
+    </div>
+  )
+}
+
 export default function RegionsPage() {
   const { destinations, loading, error } = useData()
   const [query, setQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
   const [activeRegion, setActiveRegion] = useState('All Regions')
   const [showAburiModal, setShowAburiModal] = useState(false)
+  const [slideIdx, setSlideIdx] = useState(0)
+
+  const featuredSlides = useMemo(() => {
+    if (!destinations) return []
+    return FEATURED_IDS
+      .map(id => destinations.find(d => d.id === id))
+      .filter(Boolean)
+  }, [destinations])
+
+  const goPrev = useCallback(() => {
+    setSlideIdx((prev) => (prev === 0 ? featuredSlides.length - 1 : prev - 1))
+  }, [featuredSlides.length])
+
+  const goNext = useCallback(() => {
+    setSlideIdx((prev) => (prev === featuredSlides.length - 1 ? 0 : prev + 1))
+  }, [featuredSlides.length])
+
+  const currentSlide = featuredSlides[slideIdx]
 
   const filtered = useMemo(() => {
     if (!destinations) return []
@@ -231,6 +268,62 @@ export default function RegionsPage() {
             </div>
           </div>
         </section>
+
+        {/* ── FEATURED DESTINATION CAROUSEL ── */}
+        {featuredSlides.length > 0 && (
+          <section className="featured-section">
+            <div className="featured-inner">
+              <div className="featured-carousel">
+                <Link to={`/destinations/${currentSlide.id}`} className="featured-slide-link">
+                  <div className="featured-img-container">
+                    {featuredSlides.map((slide, idx) => (
+                      <img
+                        key={slide.id}
+                        src={slide.image}
+                        alt={slide.name}
+                        className={`featured-img${idx === slideIdx ? ' active' : ''}`}
+                      />
+                    ))}
+                    <div className="featured-gradient" />
+                    <GoldCorners />
+                    <h2 className="featured-title">
+                      {currentSlide.name}
+                    </h2>
+                  </div>
+                </Link>
+
+                {/* Navigation Controls */}
+                <button 
+                  onClick={goPrev} 
+                  className="carousel-btn carousel-btn-prev"
+                  aria-label="Previous destination"
+                >
+                  <Hand className="hand-icon" strokeWidth={1.5} />
+                </button>
+
+                <button 
+                  onClick={goNext} 
+                  className="carousel-btn carousel-btn-next"
+                  aria-label="Next destination"
+                >
+                  <Hand className="hand-icon hand-icon-flip" strokeWidth={1.5} />
+                </button>
+
+                {/* Slide Indicators */}
+                <div className="carousel-dots">
+                  {featuredSlides.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSlideIdx(i)}
+                      className={`carousel-dot${i === slideIdx ? ' active' : ''}`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── TOURIST SITES GRID ── */}
         <section className="regions-tourist">
